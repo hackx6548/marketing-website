@@ -33,8 +33,7 @@
     "passport-local": "*",
     "popper.js": "^1.14.4",
     "pug": "^2.0.3",
-    "typed.js": "^1.1.6",
-    "webpack": "^4.25.1"
+    "typed.js": "^2.0.9"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -42,6 +41,7 @@
     "mocha": "^5.2.0",
     "request": "^2.88.0",
     "supertest": "^3.3.0",
+    "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   },
   "scripts": {
