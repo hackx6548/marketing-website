@@ -23,6 +23,8 @@
     "express-validator": "*",
     "jquery": "^3.3.1",
     "method-override": "^2.3.10",
+    "jimp": "^0.5.6",
+    "multer": "*",
     "mini-css-extract-plugin": "^0.4.4",
     "mongodb": "*",
     "mongoose": "^5.1.1",
