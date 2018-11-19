@@ -55,6 +55,7 @@
   },
   "scripts": {
     "start": "node index.js",
+    "build": "webpack --mode production",
     "dev": "concurrently \"webpack --mode development --watch\" \"nodemon index.js --ignore 'assets' --ignore 'public'\"  -n \"WEBPACK,NODE\" --prefix name -c \"red.bold,blue.bold\"",
     "seed": "node seeds.js",
     "seed:delete": "node seeds.js --delete",
