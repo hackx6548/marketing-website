@@ -16,6 +16,28 @@ $(function() {
   }
 });
 
+(function () {
+  const newsletterForm = document.querySelector("#mc-embedded-subscribe-form");
+
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.querySelector("#mce-EMAIL").value.trim();
+
+      $.post("/newsletter-signup", {
+        email
+      })
+        .done((data) => {
+          console.log(data)
+        })
+        .fail((response) => {
+          console.log(response.responseJSON)
+        })
+    })
+  }
+})();
+//
+
 //
 // let typedCursor = new Typed('.subtitle', {
 //   strings: ["Learn digital skills with us to get the most fulfilling jobs."],

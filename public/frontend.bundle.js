@@ -113,7 +113,26 @@ $(function () {
       }, 5000);
     }
   }
-}); //
+});
+
+(function () {
+  var newsletterForm = document.querySelector("#mc-embedded-subscribe-form");
+
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = document.querySelector("#mce-EMAIL").value.trim();
+      $.post("/newsletter-signup", {
+        email: email
+      }).done(function (data) {
+        console.log(data);
+      }).fail(function (response) {
+        console.log(response.responseJSON);
+      });
+    });
+  }
+})(); //
+// 
 // let typedCursor = new Typed('.subtitle', {
 //   strings: ["Learn digital skills with us to get the most fulfilling jobs."],
 //   typeSpeed: 30,

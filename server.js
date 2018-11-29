@@ -67,7 +67,7 @@ var methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
 var mongoose = require("mongoose");
-mongoose.connect(process.env.MONGOURL);
+mongoose.connect(process.env.MONGOURL, { useNewUrlParser: true });
 
 // Express Session
 app.use(
