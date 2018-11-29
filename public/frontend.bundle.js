@@ -103,6 +103,7 @@ __webpack_require__.r(__webpack_exports__);
 // import Popper from "popper.js";
 
 
+<<<<<<< master
 console.log("js file loaded"); // $(function() {
 //   if (typeof Storage != "undefined") {
 //     if (!sessionStorage.getItem("done")) {
@@ -115,6 +116,38 @@ console.log("js file loaded"); // $(function() {
 // });
 //
 //
+=======
+console.log("js file loaded");
+$(function () {
+  if (typeof Storage != "undefined") {
+    if (!sessionStorage.getItem("done")) {
+      setTimeout(function () {
+        $("#contactFormModal").modal("show");
+        sessionStorage.setItem("done", true);
+      }, 5000);
+    }
+  }
+});
+
+(function () {
+  var newsletterForm = document.querySelector("#mc-embedded-subscribe-form");
+
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = document.querySelector("#mce-EMAIL").value.trim();
+      $.post("/newsletter-signup", {
+        email: email
+      }).done(function (data) {
+        console.log(data);
+      }).fail(function (response) {
+        console.log(response.responseJSON);
+      });
+    });
+  }
+})(); //
+// 
+>>>>>>> merge
 // let typedCursor = new Typed('.subtitle', {
 //   strings: ["Learn digital skills with us to get the most fulfilling jobs."],
 //   typeSpeed: 30,

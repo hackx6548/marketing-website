@@ -10,6 +10,8 @@ const Event = require("../models/event");
 const express = require("express");
 const router = express.Router();
 
+const PagesController = require("../controllers/PagesController");
+
 const nodemailer = require("nodemailer");
 
 router.get("/", async (req, res) => {
@@ -90,4 +92,8 @@ router.post("/contact", async (req, res) => {
     res.redirect(req.headers.referer + "?alert=success");
   });
 });
+
+router.post("/newsletter-signup", PagesController.newsletterSignup);
+
+
 module.exports = router;
