@@ -1,12 +1,13 @@
 const { url, mongopath, getAsyncRedis } = require("./helper.js");
 const express = require("express");
 const app = express();
-const path = require("path");
-const bodyParser = require("body-parser");
-const expressValidator = require("express-validator");
-const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+var path = require("path");
+var bodyParser = require("body-parser");
+var expressValidator = require("express-validator");
+var session = require("express-session");
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
+var cron = require('node-cron');
 const MongoStore = require("connect-mongo")(session);
 // const promisify = require('es6-promisify');
 const { promisify } = require("util");
@@ -14,6 +15,7 @@ const Course = require("./models/course");
 const Page = require("./models/page");
 const Location = require("./models/location");
 const flash = require("connect-flash");
+const EventsController = require('./controllers/admin/AdminEventsController');
 
 // connect to redis server and get an extended client with promisified
 // methods getAsync() and setAsync()
@@ -211,5 +213,32 @@ console.log("");
 console.log("Routes:");
 app._router.stack.forEach(print.bind(null, []));
 console.log("");
+
+// scheduling cron job:
+cron.schedule('0 0 * * * *', () => {
+  console.log('Runing a job at 00:00 at Europe/Berlin timezone');
+
+  // Fetching Events
+  async function loadData() {
+    try {
+      const response = await EventsController.fetchevents();
+      console.log(
+        "👍 Done!\n\n Successfully Fetching data"
+      );
+    } catch (e) {
+      console.log(
+        "\n👎 Error! The Error info is below !!!"
+      );
+      console.log(e);
+      process.exit();
+    }
+  }
+
+  loadData();
+}, {
+    scheduled: true,
+    timezone: "Europe/Berlin"
+  });
+
 
 module.exports = app;
