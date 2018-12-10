@@ -9957,6 +9957,15 @@ ul.footer-ul li {
   margin: 0 0 0 0.5rem;
 }
 
+@media (max-width: 1199.98px) {
+  .container-footer h5 {
+    font-size: 1rem;
+  }
+  .footer-list {
+    font-size: 0.7rem;
+  }
+}
+
 /*
 p{
   color: #939393;
@@ -9983,8 +9992,9 @@ p{
   min-height: calc(100vh - 5rem);
   background-image: url("/images/home.jpg");
   background-size: cover;
+  y-webkit-clip-path: polygon(50% 0%, 100% 0, 100% 88%, 50% 100%, 0 92%, 0 0);
   -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 88%, 50% 100%, 0 92%, 0 0);
-  clip-path: polygon(50% 0%, 100% 0, 100% 88%, 50% 100%, 0 92%, 0 0);
+          clip-path: polygon(50% 0%, 100% 0, 100% 88%, 50% 100%, 0 92%, 0 0);
 }
 
 .mainHome {
@@ -10691,9 +10701,17 @@ input[type="week"] {
   transform: rotate(45deg);
 }
 
-.btn-apply {
-  background: #d3ba30;
-  color: #fff;
+.blue-headline {
+  color: #1f3d87;
+  font-weight: bold;
+}
+
+.body-scroll {
+  position: relative;
+}
+
+.jumbotron-singleCourse {
+  background: white;
 }
 
 .icons {
@@ -10702,6 +10720,10 @@ input[type="week"] {
 }
 
 /*timeline*/
+.timelineRow {
+  padding: 0;
+}
+
 .timelineRow:last-child .timelineDiv {
   padding-bottom: 0;
 }
@@ -10738,26 +10760,89 @@ input[type="week"] {
   margin-right: 1.5rem;
 }
 
+/******************************************
+  SUB-CONTAINER WITH SCROLLSPY AND SECTIONS
+*******************************************/
+.container-fluid-courses {
+  width: 66%;
+}
+
+.col-sm-9 {
+  padding-left: 45px;
+}
+
+/******************************************
+  SCROLLSPY
+*******************************************/
+ul.nav-courses-pills {
+  max-width: 50rem;
+  word-wrap: break-word;
+  top: 20%;
+  padding: 10px;
+  position: -webkit-sticky;
+  position: sticky;
+  list-style: none;
+  color: #007aff;
+  background-color: white;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+          box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+}
+
+.nav-link-scrollspy {
+  text-decoration: none !important;
+  color: #4285f4;
+  font-size: 1rem !important;
+}
+
+.nav-link-scrollspy:hover {
+  color: #0d47a1;
+}
+
+.nav-pills .nav-link.active {
+  color: #4285f4 !important;
+  background: white;
+}
+
+#myScrollspy {
+  margin-top: 2.2%;
+  width: 200px;
+}
+
 /*steps to apply*/
-.apply-step-number {
-  margin: 0;
+.courseSection {
   padding: 0;
 }
 
-.applyDiv:not(:last-child):before {
-  content: "";
-  background: #007aff;
-  height: 3px;
-  width: 130%;
-  position: absolute;
-  top: 30px;
+.courseApply {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2rem;
 }
 
-.apply-step-number {
+.courseApply-step {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding-right: 1rem;
+  position: relative;
+}
+
+.courseApply-step:not(:last-child):before {
+  content: "";
+  background: #17a2b8;
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  top: 30px;
+  left: 0;
+}
+
+.courseApply-stepCount {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: #007aff;
+  background: #17a2b8;
   color: white;
   font-weight: 600;
   text-align: center;
@@ -10767,6 +10852,58 @@ input[type="week"] {
   position: relative;
 }
 
+/********************************************************
+  MEDIA QUERY BREAKPOINT | SINGLE PAGE COURSES !WORK HERE
+********************************************************/
+@media (max-width: 1199.98px) {
+  .courses-scroll {
+    display: none;
+  }
+  .container-fluid-courses {
+    width: 100%;
+  }
+  .courseSection-glob {
+    text-align: center;
+  }
+  .blue-headline {
+    font-size: 2.5rem !important;
+  }
+  .jumbotron-singleCourse {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .container-fluid-courses,
+  .row-courses,
+  .col-courses {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .col-courses {
+    padding: 0;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 90.66667%;
+            flex: 0 0 90.66667%;
+    max-width: 90.66667%;
+  }
+}
+
+@media (min-width: 767.98px) and (max-width: 1560px) {
+  #courses-scroll {
+    position: absolute;
+    margin-top: 2.8%;
+    width: 200px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .display-3 {
+    font-size: 1.5rem !important;
+    color: #1f3d87;
+  }
+}
+
+/****************************************************************************/
 /*CONTACT-FORM*/
 #contactForm-box {
   width: 45vw;

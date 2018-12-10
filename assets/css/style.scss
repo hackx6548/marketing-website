@@ -773,11 +773,19 @@ input[type="week"] {
   transform: rotate(45deg);
 }
 
-////////////////////////*COURSES*////////////////////////
+////////////////////////*SINGLE PAGE COURSES !WORK HERE////////////////////////
 
-.btn-apply {
-  background: #d3ba30;
-  color: #fff;
+.blue-headline {
+  color: #1f3d87;
+  font-weight: bold;
+}
+
+.body-scroll {
+  position: relative;
+}
+
+.jumbotron-singleCourse {
+  background: white;
 }
 
 .icons {
@@ -786,7 +794,9 @@ input[type="week"] {
 }
 
 /*timeline*/
-
+.timelineRow {
+  padding: 0;
+}
 .timelineRow:last-child .timelineDiv {
   padding-bottom: 0;
 }
@@ -821,23 +831,74 @@ input[type="week"] {
   margin-right: 1.5rem;
 }
 
-/*steps to apply*/
-
-.apply-step-number {
-  margin: 0;
-  padding: 0;
+/******************************************
+  SUB-CONTAINER WITH SCROLLSPY AND SECTIONS
+*******************************************/
+.container-fluid-courses {
+  width: 66%;
+}
+.col-sm-9 {
+  padding-left: 45px;
 }
 
-.applyDiv:not(:last-child):before {
+/******************************************
+  SCROLLSPY
+*******************************************/
+
+ul.nav-courses-pills {
+  max-width: 50rem;
+  word-wrap: break-word;
+  top: 20%;
+  padding: 10px;
+  position: sticky;
+  list-style: none;
+  color: #007aff;
+  background-color: white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
+}
+
+.nav-link-scrollspy {
+  text-decoration: none !important;
+  color: #4285f4;
+  font-size: 1rem !important;
+}
+.nav-link-scrollspy:hover {
+  color: #0d47a1;
+}
+.nav-pills .nav-link.active {
+  color: #4285f4 !important;
+  background: white;
+}
+
+#myScrollspy {
+  margin-top: 2.2%;
+  width: 200px;
+}
+/*steps to apply*/
+.courseSection {
+  padding: 0;
+}
+.courseApply {
+  display: flex;
+  margin-top: 2rem;
+}
+.courseApply-step {
+  flex: 1;
+  padding-right: 1rem;
+  position: relative;
+}
+
+.courseApply-step:not(:last-child):before {
   content: "";
   background: $blue;
   height: 3px;
-  width: 130%;
+  width: 100%;
   position: absolute;
   top: 30px;
+  left: 0;
 }
 
-.apply-step-number {
+.courseApply-stepCount {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -850,6 +911,57 @@ input[type="week"] {
   display: block;
   position: relative;
 }
+
+/********************************************************
+  MEDIA QUERY BREAKPOINT | SINGLE PAGE COURSES !WORK HERE
+********************************************************/
+@media (max-width: 1199.98px) {
+  .courses-scroll {
+    display: none;
+  }
+  .container-fluid-courses {
+    width: 100%;
+  }
+
+  .courseSection-glob {
+    text-align: center;
+  }
+
+  .blue-headline {
+    font-size: 2.5rem !important;
+  }
+  .jumbotron-singleCourse {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .container-fluid-courses,
+  .row-courses,
+  .col-courses {
+    justify-content: center;
+  }
+  .col-courses {
+    padding: 0;
+    flex: 0 0 90.66667%;
+    max-width: 90.66667%;
+  }
+}
+
+@media (min-width: 767.98px) and (max-width: 1560px) {
+  #courses-scroll {
+    position: absolute;
+    margin-top: 2.8%;
+    width: 200px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .display-3 {
+    font-size: 1.5rem !important;
+    color: #1f3d87;
+  }
+}
+
+/****************************************************************************/
 
 /*CONTACT-FORM*/
 #contactForm-box {

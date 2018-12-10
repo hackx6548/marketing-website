@@ -80,4 +80,11 @@ ul.footer-ul li {
   color:red; 
   font-size: 36px;
   // font-weight: bold;
+@media (max-width: 1199.98px) {
+  .container-footer h5 {
+    font-size: 1rem;
+  }
+  .footer-list {
+    font-size: 0.7rem;
+  }
 }

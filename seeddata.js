@@ -1,4 +1,3 @@
-
 exports.categories = [
   {
     name: "Hard"
@@ -9,10 +8,10 @@ exports.categories = [
 ];
 
 exports.adminUser = {
-  name: 'admin',
-  email: 'admin@example.com',
-  username: 'admin',
-  password: '$2a$10$.D.ObRTjFkv4X0zyLCOE3ui9FKU1GveILRgvhQMWlIl2q3jbgnNoi', //password
+  name: "admin",
+  email: "admin@example.com",
+  username: "admin",
+  password: "$2a$10$.D.ObRTjFkv4X0zyLCOE3ui9FKU1GveILRgvhQMWlIl2q3jbgnNoi" //password
 };
 
 exports.jobs = [
@@ -85,21 +84,19 @@ Das DCI Digital Career Institute ist ein Bildungsträger, der sich auf die Quali
 
 Wenn du dich für unsere Stelle am Berliner Standort interessierst und die passenden Erfahrungen mitbringst, dann schick gerne deine Unterlagen (Motivationsschreiben, Lebenslauf) an Maria Courmont: jobs@devugees.org`
   }
-]
+];
 
 exports.pages = [
   {
     title: "Devugees",
-    content:
-      `Das Digital Career Institute hat das Devugees-Programm aufgelegt, um interessierten Geflüchteten die Möglichkeit zu geben, sich für Jobs in der Digitalwirtschaft zu qualifizieren. Wir sind davon überzeugt, dass das Devugees-Programm dazu beiträgt, Geflüchtete schnell und umfassend in den deutschen Arbeitsmarkt und die deutsche Gesellschaft zu integrieren. Wir halten Bildung für den Schlüssel zu einem erfolgreichen sozialen und Arbeitsleben.
+    content: `Das Digital Career Institute hat das Devugees-Programm aufgelegt, um interessierten Geflüchteten die Möglichkeit zu geben, sich für Jobs in der Digitalwirtschaft zu qualifizieren. Wir sind davon überzeugt, dass das Devugees-Programm dazu beiträgt, Geflüchtete schnell und umfassend in den deutschen Arbeitsmarkt und die deutsche Gesellschaft zu integrieren. Wir halten Bildung für den Schlüssel zu einem erfolgreichen sozialen und Arbeitsleben.
 
 `,
     order: 0
   },
   {
     title: "Jobcenter/AA",
-    content:
-      `DCI Digital Career Institute gGmbH
+    content: `DCI Digital Career Institute gGmbH
         \n\r
         Zugelassener Träger für die Förderung der Beruflichen Weiterbildung nach dem Recht der Arbeitsförderung.
         \n\r
@@ -127,8 +124,7 @@ exports.pages = [
   },
   {
     title: "Support us",
-    content:
-      `
+    content: `
         At Digital Career Institute  you learn the most relevant technology skills of today from Web Development, Digital Marketing, Product Management to Data.
         \n\r
         We train and  provide the necessary hardware and digital learning aids as well as a relevant mentoring and buddy system needed to get the digital skills of today’s age.`,
@@ -136,8 +132,7 @@ exports.pages = [
   },
   {
     title: "Become a buddy",
-    content:
-      `Digital Career Institute doesn’t only qualify refugees but also helps to integrate them. To keep ambitions and motivation of the participants high, we want to place a spiritual coach, a buddy, at their sides – you!
+    content: `Digital Career Institute doesn’t only qualify refugees but also helps to integrate them. To keep ambitions and motivation of the participants high, we want to place a spiritual coach, a buddy, at their sides – you!
 
         \n\r
         Become a buddy
@@ -181,72 +176,89 @@ exports.stories = [
     title: "Voluptatem sunt similique non ",
     alumniName: "Daniela",
     workPosition: "Ikea, Full-Stack Developer",
-    excerpt: "Daniela is one of our best students and an important part of the student community here at DCI campus.",
-    content: "The story of Jenny which has a super cool job as a Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum. Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum. Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum.",
+    excerpt:
+      "Daniela is one of our best students and an important part of the student community here at DCI campus.",
+    content:
+      "The story of Jenny which has a super cool job as a Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum. Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum. Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum.",
     order: 1,
-    image: 'example_image_1.jpg'
+    image: "example_image_1.jpg"
   },
   {
     title: "Volsggdsg sytyt sgfdhgfhgjg ",
     alumniName: "Jürgen",
     workPosition: "Zalando, Full-Stack Developer",
-    excerpt: "Jürgen recently landed a job as a Junior Front-End Engineer at streaming provider Loots here in Berlin.",
-    content:  "Back in the days she was a bit introvert but now she can handle a lot of strange situations with her colleagues without any problem. Talking in front of many people Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum. Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum. Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum.",
+    excerpt:
+      "Jürgen recently landed a job as a Junior Front-End Engineer at streaming provider Loots here in Berlin.",
+    content:
+      "Back in the days she was a bit introvert but now she can handle a lot of strange situations with her colleagues without any problem. Talking in front of many people Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum. Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum. Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum.",
     order: 2,
-    image: 'example_image_2.jpg'
+    image: "example_image_2.jpg"
   },
   {
-    title: "Qui mollt itia sit animi quisquam et nostrud consequatur Facilis dignissimo",
+    title:
+      "Qui mollt itia sit animi quisquam et nostrud consequatur Facilis dignissimo",
     alumniName: "Manny",
     workPosition: "Amazon, Front-end Developer",
-    excerpt: "Manny recently landed a job as a Junior Full-Stack Engineer at streaming provider Loots here in Berlin.",
-    content:  "Stuart bit introvert but now she can handle a lot of strange situations with her colleagues without any problem. Talking in front of many people Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum. Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum. Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum.",
+    excerpt:
+      "Manny recently landed a job as a Junior Full-Stack Engineer at streaming provider Loots here in Berlin.",
+    content:
+      "Stuart bit introvert but now she can handle a lot of strange situations with her colleagues without any problem. Talking in front of many people Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum. Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum. Porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Maecenas faucibus mollis interdum.",
     order: 3,
-    image: 'example_image_3.jpg'
+    image: "example_image_3.jpg"
   }
 ];
 
 exports.courses = [
   {
     headline: "Digital Marketing / E-Commerce",
-    icon: "https://digitalcareerinstitute.org/wp-content/uploads/2018/10/shop-bag-1.png",
-    subheading: "Write here something...",
-    title: "Take 4 weeks to find out what digital jobs suits you best by visiting the best tech companies and learning the basics.",
-    subtitle: "Take special one to one 40 hours of coaching to find out what digital jobs suits you best. We learn hands-on from people working in the tech scene",
+    icon:
+      "https://digitalcareerinstitute.org/wp-content/uploads/2018/10/shop-bag-1.png",
+    subheading: "Write here something",
+    title:
+      "Take 4 weeks to find out what digital jobs suits you best by visiting the best tech companies and learning the basics.",
+    subtitle:
+      "Take special one to one 40 hours of coaching to find out what digital jobs suits you best. We learn hands-on from people working in the tech scene",
     archivements: [
       {
-        icon: "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
-        description: "Write here something..."
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
+        description: "Write here something"
       },
       {
-        icon: "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
-        description: "Write here something..."
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
+        description: "Write here something"
       },
       {
-        icon: "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
-        description: "Write here something..."
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
+        description: "Write here something"
       }
     ],
     features: [
       {
-        title: "Write here something...",
-        subtitle: "Write here something...",
-        icon:"https://digitalcareerinstitute.org/wp-content/uploads/2017/04/javascript-hand-drawn-file.png"
+        title: "Write here something",
+        subtitle: "Write here something",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/javascript-hand-drawn-file.png"
       },
       {
-        title: "Write here something...",
-        subtitle: "Write here something...",
-        icon:"https://digitalcareerinstitute.org/wp-content/uploads/2017/04/sql-file-format-symbol.png"
+        title: "Write here something",
+        subtitle: "Write here something",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/sql-file-format-symbol.png"
       },
       {
-        title: "Write here something...",
-        subtitle: "Write here something...",
-        icon:"https://digitalcareerinstitute.org/wp-content/uploads/2017/04/github-logo.png"
+        title: "Write here something",
+        subtitle: "Write here something",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/github-logo.png"
       },
       {
-        title: "Write here something...",
-        subtitle: "Write here something...",
-        icon:"https://digitalcareerinstitute.org/wp-content/uploads/2017/04/project-manager.png"
+        title: "Write here something",
+        subtitle: "Write here something",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/project-manager.png"
       }
     ],
     timeline: [
@@ -267,33 +279,41 @@ exports.courses = [
       },
       {
         title: "Project Work",
-        subtitle: "Work on assignments to develop practical skills in a structured and supportive environment",
+        subtitle:
+          "Work on assignments to develop practical skills in a structured and supportive environment",
         time: "12:30"
       },
       {
         title: "Language Course",
-        subtitle: "Learn and improve your German and English with Expert instructors",
+        subtitle:
+          "Learn and improve your German and English with Expert instructors",
         time: "16:00"
       }
     ]
   },
   {
     headline: "Orientation Course",
-    icon: "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/Center-Direction-96.png",
+    icon:
+      "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/Center-Direction-96.png",
     subheading: "Find out what tech job are you passionate about",
-    title: "In this immersive 12 month course you will acquire the skills to become a job-ready Full stake developer.   ",
-    subtitle: "Take 4 weeks and find out which digital jobs suits you best. We visit the best tech companies and learn hands-on from people working there.",
+    title:
+      "In this immersive 12 month course you will acquire the skills to become a job-ready Full stake developer.   ",
+    subtitle:
+      "Take 4 weeks and find out which digital jobs suits you best. We visit the best tech companies and learn hands-on from people working there.",
     archivements: [
       {
-        icon: "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
         description: "Introduction to Tech"
       },
       {
-        icon: "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
         description: "Company Tours"
       },
       {
-        icon: "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
         description: "Soft Skills"
       }
     ],
@@ -301,22 +321,29 @@ exports.courses = [
       {
         title: "Technical Introduction",
         subtitle: "Internet, Browser, Coding Languages and Web Development",
-        icon:"https://digitalcareerinstitute.org/wp-content/uploads/2017/04/javascript-hand-drawn-file.png"
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/javascript-hand-drawn-file.png"
       },
       {
         title: "Soft skills",
-        subtitle: "Discover and Measure one’s Personality, Behaviour as Employee and Teamwork",
-        icon:"https://digitalcareerinstitute.org/wp-content/uploads/2017/04/sql-file-format-symbol.png"
+        subtitle:
+          "Discover and Measure one’s Personality, Behaviour as Employee and Teamwork",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/sql-file-format-symbol.png"
       },
       {
         title: "Company Tours",
-        subtitle: "Take a tour of a local startup and see what the work environment is all about",
-        icon:"https://digitalcareerinstitute.org/wp-content/uploads/2017/04/github-logo.png"
+        subtitle:
+          "Take a tour of a local startup and see what the work environment is all about",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/github-logo.png"
       },
       {
         title: "Find your passion",
-        subtitle: "Figure out which career path you want to take to achieve your dreams",
-        icon:"https://digitalcareerinstitute.org/wp-content/uploads/2017/04/project-manager.png"
+        subtitle:
+          "Figure out which career path you want to take to achieve your dreams",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/project-manager.png"
       }
     ],
     timeline: [
@@ -337,61 +364,76 @@ exports.courses = [
       },
       {
         title: "Project Work",
-        subtitle: "Work on assignments to develop practical skills in a structured and supportive environment",
+        subtitle:
+          "Work on assignments to develop practical skills in a structured and supportive environment",
         time: "14:00"
       },
       {
         title: "Office Hours & Homework",
-        subtitle: "Get one to one time with instructors. Students often stay late to work together and solve problems before heading home. Make the most of your 9 months!",
+        subtitle:
+          "Get one to one time with instructors. Students often stay late to work together and solve problems before heading home. Make the most of your 9 months!",
         time: "17:00"
       }
     ]
   },
   {
     headline: "Web Development Course",
-    icon: "https://digitalcareerinstitute.org/wp-content/uploads/2017/05/Web-Design-64.png",
+    icon:
+      "https://digitalcareerinstitute.org/wp-content/uploads/2017/05/Web-Design-64.png",
     subheading: "Become a web developer in 12 months",
     title: "Start Your Career in Web Development",
-    subtitle: "Want to become a professional web developer? This is how it’s done. In this intensive, fully immersive 12-months course with 11-months of learning and 3-months internship, we’ll teach you everything you need to know to unlock your spot in one of the fastest-growing industries.",
+    subtitle:
+      "Want to become a professional web developer? This is how it’s done. In this intensive, fully immersive 12-months course with 11-months of learning and 3-months internship, we’ll teach you everything you need to know to unlock your spot in one of the fastest-growing industries.",
     archivements: [
       {
-        icon: "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
         description: "Learn from professional developers"
       },
       {
-        icon: "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
         description: "Develop your own project"
       },
       {
-        icon: "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/students-on-class.png",
         description: "Ongoing career placement support"
       }
     ],
     features: [
       {
         title: "Programming basics",
-        subtitle: "Learn the core skills of development – a beginner-friendly stack HTML, CSS and JavaScript",
-        icon:"https://digitalcarlearnedeerinstitute.org/wp-content/uploads/2017/04/javascript-hand-drawn-file.png"
+        subtitle:
+          "Learn the core skills of development – a beginner-friendly stack HTML, CSS and JavaScript",
+        icon:
+          "https://digitalcarlearnedeerinstitute.org/wp-content/uploads/2017/04/javascript-hand-drawn-file.png"
       },
       {
         title: "Specialisation",
-        subtitle: "Specialise in technologies like Angular, Node.js and Databases",
-        icon:"https://digitalcareerinstitute.org/wp-content/uploads/2017/04/sql-file-format-symbol.png"
+        subtitle:
+          "Specialise in technologies like Angular, Node.js and Databases",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/sql-file-format-symbol.png"
       },
       {
         title: "Team Work in Development",
         subtitle: "Learn to work on a project with other developers",
-        icon:"https://digitalcareerinstitute.org/wp-content/uploads/2017/04/github-logo.png"
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/github-logo.png"
       },
       {
         title: "Project Management",
         subtitle: "Learn agile project management and tools like scrum",
-        icon:"https://digitalcareerinstitute.org/wp-content/uploads/2017/04/project-manager.png"
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/project-manager.png"
       },
       {
         title: "Internship",
-        subtitle: "your steps into the job, do an internship in a tech company to apply what you have learned",
-        icon:"https://digitalcareerinstitute.org/wp-content/uploads/2017/04/project-manager.png"
+        subtitle:
+          "your steps into the job, do an internship in a tech company to apply what you have learned",
+        icon:
+          "https://digitalcareerinstitute.org/wp-content/uploads/2017/04/project-manager.png"
       }
     ],
     timeline: [
@@ -412,19 +454,21 @@ exports.courses = [
       },
       {
         title: "Project Work",
-        subtitle: "Work on assignments to develop practical skills in a structured and supportive environment",
+        subtitle:
+          "Work on assignments to develop practical skills in a structured and supportive environment",
         time: "12:30"
       },
       {
         title: "Language Course",
-        subtitle: "Learn and improve your German and English with Expert instructors",
+        subtitle:
+          "Learn and improve your German and English with Expert instructors",
         time: "16:00"
       }
     ]
   }
-]
+];
 
-const date = new Date().getTime()
+const date = new Date().getTime();
 exports.contacts = [
   {
     name: "Brian Willson",
@@ -432,7 +476,7 @@ exports.contacts = [
     body:
       "Fugit quia excepteur ipsam anim molestiae est elit animi ut ad est ut",
     createdAt: new Date(date - 86400000).toISOString(),
-    updatedAt: new Date(),
+    updatedAt: new Date()
   },
   {
     name: "Jasper Wynn",
@@ -440,7 +484,7 @@ exports.contacts = [
     body:
       "Fugit quia excepteur ipsam anim molestiae est elit animi ut ad est ut",
     createdAt: new Date(date - 86400000).toISOString(),
-    updatedAt: new Date(),
+    updatedAt: new Date()
   },
   {
     name: "Sonia Romero",
@@ -448,6 +492,6 @@ exports.contacts = [
     body:
       "Quidem dolorum ex qui quis rerum culpa laboriosam doloremque excepturi voluptatum blanditiis cum",
     createdAt: new Date(date - 86400000).toISOString(),
-    updatedAt: new Date(),
+    updatedAt: new Date()
   }
 ];
