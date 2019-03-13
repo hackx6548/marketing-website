@@ -1,0 +1,9 @@
+mixin courseCard(course)
+    .col-md-6.col-lg-4
+        .service-item.p-4
+            a.card-link(href="/course\/"+course.slug)
+            .service-image.icon-image.mb-5
+                img.h-100(src="/images/"+course.icon, alt=course.title)
+            .service-content
+                h4.service-title= course.headline
+                p=course.title

@@ -7,6 +7,26 @@ $pink: #a800ff;
 $turquoise: #3dbaf7;
 $textOrange: #da9446;
 
+::selection {
+  background-color: $blue;
+  color: #fff
+}
+
+.bg-primary ::selection {
+  background-color: #fff;
+  color: $blue
+}
+
+::-moz-selection {
+  background-color: $blue;
+  color: #fff
+}
+
+.bg-primary ::-moz-selection {
+  background-color: #fff;
+  color: $blue
+}
+
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 .left {
