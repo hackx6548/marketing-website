@@ -111,5 +111,6 @@ mixin singleCourse
 script.
   window.document.querySelectorAll("[data-toggle='modal']").forEach(i=>i.onclick = openModal)
      function openModal() {
-        window.history.replaceState({}, '/', `${window.location.origin}/contact`)
+          window.document.getElementById('track').value = window.location.pathname
+          window.history.replaceState({}, '/', `${window.location.pathname.replace('/contact','')}/contact`)
       }

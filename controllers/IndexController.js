@@ -59,6 +59,7 @@ module.exports.contactLocations = async (req, res) => {
 };
 module.exports.contact = async (req, res, next) => {
   const { name, email, body, phone, locations, TermsofService } = req.body;
+
   if (req.body.age) {
     console.log("Bot stepped into honeypot!");
     req.flash(
@@ -79,6 +80,7 @@ module.exports.contact = async (req, res, next) => {
   contact.name = req.body.name;
   contact.email = req.body.email;
   contact.phone = req.body.phone;
+  contact.track = req.body.track;
   contact.body = req.body.body;
   contact.createdAt = new Date();
   contact.isCompany = req.body.companytour ? true : false;
@@ -129,7 +131,7 @@ module.exports.contact = async (req, res, next) => {
       `Thanks for your message. We will reply to you as soon as possible.`
     );
     console.log("Message sent: %s", info.messageId);
-    res.redirect(req.headers.referer);
+    res.redirect(req.headers.referer.replace("/contact", ""));
     next();
   });
 };
