@@ -53,9 +53,9 @@ const toggleNL = (remove = false) => {
 
 let counted = false;
 const countUp = () => {
-  const counter = document.querySelector(".section-counter")
+  const counter = document.querySelector(".section-counter");
 
-  if (counter &&elementInViewport2(counter) && !counted) {
+  if (counter && elementInViewport2(counter) && !counted) {
     counted = true;
     $(".counter-count").each(function() {
       $(this)
@@ -107,7 +107,6 @@ const throttle = (func, limit) => {
   };
 };
 
-
 var floatings = [...document.querySelectorAll(".floatings")];
 function showFloatings() {
   let timeout = 0;
@@ -144,6 +143,18 @@ window.onscroll = throttle(function() {
   countUp();
 }, 10);
 
+function openModal() {
+  window.document.getElementById("track").value = window.location.pathname;
+  window.history.replaceState(window.location.pathname, "/", `/contact`);
+}
+
+window.document
+  .querySelectorAll("[data-toggle='modal']")
+  .forEach(i => (i.onclick = openModal));
+
+$("#contactFormModal").on("hidden.bs.modal", function(e) {
+  window.history.replaceState({}, "/", window.history.state);
+});
 //
 // let typedCursor = new Typed('.subtitle', {
 //   strings: ["Learn digital skills with us to get the most fulfilling jobs."],

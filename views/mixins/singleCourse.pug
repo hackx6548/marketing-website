@@ -108,9 +108,3 @@ mixin singleCourse
       if user && user.admin === "true"
         div.py-3
           a.btn.btn-outline-primary(target="_blank" href='/admin/courses/edit/'+course.slug) Edit course
-script.
-  window.document.querySelectorAll("[data-toggle='modal']").forEach(i=>i.onclick = openModal)
-     function openModal() {
-          window.document.getElementById('track').value = window.location.pathname
-          window.history.replaceState({}, '/', `${window.location.pathname.replace('/contact','')}/contact`)
-      }

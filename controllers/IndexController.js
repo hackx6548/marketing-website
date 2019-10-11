@@ -91,6 +91,10 @@ module.exports.contact = async (req, res, next) => {
   const location = await Location.findById(req.body.locations);
   const mailTemplate = `Contact from: <table>
     <tr>
+      <td>Track: </td>
+      <td>${req.body.track}</td>
+   </tr>
+    <tr>
       <td>Name: </td>
       <td>${req.body.name}</td>
     </tr>
