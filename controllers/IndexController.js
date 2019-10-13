@@ -77,10 +77,11 @@ module.exports.contact = async (req, res, next) => {
     return;
   }
   const contact = new Contact();
+  const track = req.body.track || "https://digitalcareerinstitute.org";
   contact.name = req.body.name;
   contact.email = req.body.email;
   contact.phone = req.body.phone;
-  contact.track = req.body.track;
+  contact.track = track;
   contact.body = req.body.body;
   contact.createdAt = new Date();
   contact.isCompany = req.body.companytour ? true : false;
@@ -89,10 +90,11 @@ module.exports.contact = async (req, res, next) => {
     res.redirect(req.headers.referer);
   }
   const location = await Location.findById(req.body.locations);
+
   const mailTemplate = `Contact from: <table>
     <tr>
-      <td>Track: </td>
-      <td>${req.body.track}</td>
+      <td>Message send from: </td>
+      <a href=${track}>${track}</a>
    </tr>
     <tr>
       <td>Name: </td>

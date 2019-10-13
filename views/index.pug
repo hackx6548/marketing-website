@@ -26,9 +26,3 @@ block content
               .px-md-5
                 .px-sm-5
                   +contactform
-  script.
-    window.document.querySelectorAll("[data-toggle='modal']").forEach(i=>i.onclick = openModal)
-      function openModal() {
-        window.document.getElementById('track').value = window.location.pathname
-        window.history.replaceState({}, '/', `contact`)
-      }

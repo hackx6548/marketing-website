@@ -8,6 +8,7 @@ import "bootstrap/js/dist/collapse";
 import "bootstrap/js/dist/alert";
 
 require("../css/style.scss");
+
 const toggleNL = (remove = false) => {
   document.getElementById("nlbtn").disabled = remove ? "" : "disabled";
   document.getElementById("nlbtn").innerHTML = remove ? "Subscribe" : "Loading";
@@ -143,16 +144,13 @@ window.onscroll = throttle(function() {
   countUp();
 }, 10);
 
-function openModal() {
-  window.document.getElementById("track").value = window.location.pathname;
+$("#contactFormModal").on("shown.bs.modal", function(e) {
+  window.document.querySelector("#track").value = window.location.href;
   window.history.replaceState(window.location.pathname, "/", `/contact`);
-}
-
-window.document
-  .querySelectorAll("[data-toggle='modal']")
-  .forEach(i => (i.onclick = openModal));
+});
 
 $("#contactFormModal").on("hidden.bs.modal", function(e) {
+  window.document.querySelector("#track").value = "";
   window.history.replaceState({}, "/", window.history.state);
 });
 //

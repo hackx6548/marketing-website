@@ -6,7 +6,7 @@ mixin contactform
         input#name.form-control(name="name" type='text', placeholder='Name', value='', required)
         .invalid-feedback
           | Valid first name is required.
-        input#track.form-control(name="track" type="hidden", value=``, required)
+        input#track.form-control(name="track" type="hidden" )
       .col-md-6.mb-3
         label.sr-only(for='email') Email
         span.text-muted
