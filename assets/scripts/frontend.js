@@ -153,6 +153,7 @@ $("#contactFormModal").on("hidden.bs.modal", function(e) {
   window.document.querySelector("#track").value = "";
   window.history.replaceState({}, "/", window.history.state);
 });
+
 //
 // let typedCursor = new Typed('.subtitle', {
 //   strings: ["Learn digital skills with us to get the most fulfilling jobs."],
