@@ -14,6 +14,7 @@ exports.groupByKey = (items, key) => {
   }, {});
 };
 exports.isAdmin = req => req.user.admin !== "true";
+exports.isSuperAdmin = req => req.user.superAdmin !== "true";
 
 module.exports.ensureAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {

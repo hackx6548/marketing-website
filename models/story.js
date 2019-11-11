@@ -2,9 +2,13 @@ var mongoose = require("mongoose"),
   Schema = mongoose.Schema,
   QuillDeltaToHtmlConverter = require("quill-delta-to-html")
     .QuillDeltaToHtmlConverter,
-  URLSlugs = require('mongoose-url-slugs');
+  URLSlugs = require("mongoose-url-slugs");
 
 var StorySchema = new Schema({
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
   title: String,
   subtitle: String,
   workPosition: String,
@@ -15,25 +19,28 @@ var StorySchema = new Schema({
   companylogo: String,
   userId: String,
   language: { type: Schema.ObjectId, ref: "Language" },
-  languageVersion: { type: Schema.ObjectId, ref: "Story"}
+  languageVersion: { type: Schema.ObjectId, ref: "Story" }
 });
-StorySchema.virtual("toHTML").get(function () {
+StorySchema.virtual("toHTML").get(function() {
   try {
     const content = this.content.ops;
     if (!content) {
-      throw "is no quill data yet"
+      throw "is no quill data yet";
     }
     const converter = new QuillDeltaToHtmlConverter(content);
     return converter.convert();
   } catch (e) {
-    console.log('error', e);
+    console.log("error", e);
     return this.content;
   }
 });
-StorySchema.plugin(URLSlugs('title'));
-StorySchema.pre("remove", function (next) {
-  if(!!this.languageVersion){
-    this.languageVersion.update({ $unset: { language: 1, languageVersion: 1 } }, next);
+StorySchema.plugin(URLSlugs("title"));
+StorySchema.pre("remove", function(next) {
+  if (!!this.languageVersion) {
+    this.languageVersion.update(
+      { $unset: { language: 1, languageVersion: 1 } },
+      next
+    );
   } else {
     next();
   }
