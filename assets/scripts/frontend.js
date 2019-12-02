@@ -232,6 +232,9 @@ window.onload = function() {
   document.querySelector(".cont_principal").className =
     "cont_principal cont_error_active";
 };
+$(document).ready(function() {  
+  $('.bd-example-modal-lg').modal('show');
+});
 //
 // let typedCursor = new Typed('.subtitle', {
 //   strings: ["Learn digital skills with us to get the most fulfilling jobs."],
