@@ -235,6 +235,25 @@ window.onload = function() {
 $(document).ready(function() {  
   $('.bd-example-modal-lg').modal('show');
 });
+const cookiebutton = document.getelementbyid("cookiehint")
+if (cookiebutton) {
+  if (typeof storage != "undefined") {
+    if (
+      !localstorage.getitem("dci_privacy_accepted")
+      ||
+      parseint(localstorage.getitem("dci_privacy_accepted")) < date.now() - 604800000
+    ) {
+      settimeout(function() {
+        cookiebutton.classlist.add("shown");
+      }, 5000);
+    }
+  }
+  document.getelementbyid("cookieclosebutton").addeventlistener("click", (e) => {
+    e.preventdefault();
+    localstorage.setitem("dci_privacy_accepted", date.now());
+    cookiebutton.classlist.remove("shown");
+  });
+} 
 //
 // let typedCursor = new Typed('.subtitle', {
 //   strings: ["Learn digital skills with us to get the most fulfilling jobs."],
