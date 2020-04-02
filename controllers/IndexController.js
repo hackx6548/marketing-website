@@ -94,6 +94,100 @@ module.exports.landingpage = async (req, res) => {
     }
     const [nonComanyStoriesRes, companyStoriesRes, locationsRes, partnersRes, coursesRes, contact_user, events] = indexData;
 
+    //TODO replace by API call
+    const zoomresponse = {
+      "page_count": "1",
+      "page_number": "1",
+      "page_size": "30",
+      "total_records": "1",
+      "webinars": [
+        {
+          "uuid": "dsghfkhaewfds",
+          "id": 0001001,
+          "host_id": "24654130000000",
+          "topic": "My Webinar",
+          "agenda": "Education councelling orientation",
+          "type": "5",
+          "duration": "60",
+          "start_time": "2019-09-24T22:00:00Z",
+          "timezone": "Berlin/CEST",
+          "created_at": "2019-08-30T22:00:00Z",
+          "join_url": "https://zoom.us/0001000/awesomewebinar"
+        }, {
+          "uuid": "dsghfkhaewfds",
+          "id": 0001001,
+          "host_id": "24654130000000",
+          "topic": "My Webinar",
+          "agenda": "Webdevelopment remote inspiration",
+          "type": "5",
+          "duration": "120",
+          "start_time": "2012-04-04T11:00:00Z",
+          "timezone": "Berlin/CEST",
+          "created_at": "2019-08-30T22:00:00Z",
+          "join_url": "https://zoom.us/0001001/awesomewebinar"
+        }, {
+          "uuid": "dsghfkhaewfds",
+          "id": 0001001,
+          "host_id": "24654130000000",
+          "topic": "My Webinar",
+          "agenda": "Webdevelopment remote kickoff",
+          "type": "5",
+          "duration": "120",
+          "start_time": "2012-04-04T11:00:00Z",
+          "timezone": "Berlin/CEST",
+          "created_at": "2019-08-30T22:00:00Z",
+          "join_url": "https://zoom.us/0001001/awesomewebinar"
+        }, {
+          "uuid": "dsghfkhaewfds",
+          "id": 0001001,
+          "host_id": "24654130000000",
+          "topic": "My Webinar",
+          "agenda": "Marketing remote lesson",
+          "type": "5",
+          "duration": "120",
+          "start_time": "2012-04-04T11:00:00Z",
+          "timezone": "Berlin/CEST",
+          "created_at": "2019-08-30T22:00:00Z",
+          "join_url": "https://zoom.us/0001001/awesomewebinar"
+        }, {
+          "uuid": "dsghfkhaewfds",
+          "id": 0001001,
+          "host_id": "24654130000000",
+          "topic": "My Webinar",
+          "agenda": "Webdevelopment remote lesson",
+          "type": "5",
+          "duration": "120",
+          "start_time": "2012-04-04T11:00:00Z",
+          "timezone": "Berlin/CEST",
+          "created_at": "2019-08-30T22:00:00Z",
+          "join_url": "https://zoom.us/0001001/awesomewebinar"
+        }, {
+          "uuid": "dsghfkhaewfds",
+          "id": 0001001,
+          "host_id": "24654130000000",
+          "topic": "My Webinar",
+          "agenda": "Webdevelopment remote lesson",
+          "type": "5",
+          "duration": "120",
+          "start_time": "2012-04-04T11:00:00Z",
+          "timezone": "Berlin/CEST",
+          "created_at": "2019-08-30T22:00:00Z",
+          "join_url": "https://zoom.us/0001001/awesomewebinar"
+        }, {
+          "uuid": "dsghfkhaewfds",
+          "id": 0001000,
+          "host_id": "24654130000000",
+          "topic": "My Webinar",
+          "agenda": "IT-systemitegration hardware mashup",
+          "type": "5",
+          "duration": "120",
+          "start_time": "2012-04-05T11:00:00Z",
+          "timezone": "Berlin/CEST",
+          "created_at": "2019-08-30T22:00:00Z",
+          "join_url": "https://zoom.us/0001002/awesomewebinar"
+        }
+      ]
+    }
     res.render('index', {
       events,
       companyStories: companyStoriesRes.length !== 0 ? companyStoriesRes : nonComanyStoriesRes.splice(nonComanyStoriesRes.length, nonComanyStoriesRes.length + 3),
@@ -101,7 +195,8 @@ module.exports.landingpage = async (req, res) => {
       partners: partnersRes,
       locations: locationsRes,
       contact_user,
-      courses: coursesRes
+      courses: coursesRes,
+      zoomresponse
     })
   } catch (err) {
     console.log(err)

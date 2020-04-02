@@ -156,9 +156,16 @@ block content
 
       if events
         section#events.bg-light.py-5
+          h2.display-1.text-center: +translate("Upcoming events")
+          //h3.mb-5.text-center.text-muted: +translate("Meet us in person in several locations in Germany")
+          h3.mb-5.text-center.text-muted=__("All our events take place virtually as webinars.")
+
           .container
-            h2.display-1.text-center: +translate("Upcoming events")
-            h3.mb-5.text-center.text-muted: +translate("Meet us in person in several locations in Germany")
+
+            .row.pt-3
+              each webinar, index in zoomresponse.webinars
+                +singleWebinar(webinar, index)
+            h3.mb-5.text-center= __("Other events")
             .row.mx-md-5
               each event in events
                 +singleEvent(event)
