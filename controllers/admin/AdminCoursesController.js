@@ -9,7 +9,25 @@ const AbstractController = require("./AbstractController");
 
 const Course = require("../../models/course");
 const Story = require("../../models/story");
+const courseFields = [
+  { name: "curriculumPdf", maxCount: 1 },
+  { name: "icon", maxCount: 1 },
+  { name: "subicon", maxCount: 1 },
+  { name: "archivement_icon_1", maxCount: 1 },
+  { name: "archivement_icon_2", maxCount: 1 },
+  { name: "archivement_icon_3", maxCount: 1 },
+  { name: "archivement_icon_4", maxCount: 1 },
+  { name: "archivement_icon_5", maxCount: 1 },
+  { name: "archivement_icon_6", maxCount: 1 },
+  { name: "features_icon_1", maxCount: 1 },
+  { name: "features_icon_2", maxCount: 1 },
+  { name: "features_icon_3", maxCount: 1 },
+  { name: "features_icon_4", maxCount: 1 },
+  { name: "features_icon_5", maxCount: 1 },
+  { name: "features_icon_6", maxCount: 1 }
+]
 
+module.exports.courseFields = courseFields
 module.exports.getCourses = async function(req, res) {
   let courses = await Course.find({})
     .sort({ order: 1 })
@@ -173,20 +191,7 @@ module.exports.uploadImages = multer({
       next({ message: "That filetype is not allowed!" }, false);
     }
   }
-}).fields([
-  { name: "curriculumPdf", maxCount: 1 },
-  { name: "icon", maxCount: 1 },
-  { name: "archivement_icon_1", maxCount: 1 },
-  { name: "archivement_icon_2", maxCount: 1 },
-  { name: "archivement_icon_3", maxCount: 1 },
-  { name: "archivement_icon_4", maxCount: 1 },
-  { name: "archivement_icon_5", maxCount: 1 },
-  { name: "features_icon_1", maxCount: 1 },
-  { name: "features_icon_2", maxCount: 1 },
-  { name: "features_icon_3", maxCount: 1 },
-  { name: "features_icon_4", maxCount: 1 },
-  { name: "features_icon_5", maxCount: 1 }
-]);
+}).fields(courseFields);
 
 // Resize the images with different thumbnail sizes
 //
