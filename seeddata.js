@@ -41,20 +41,22 @@ exports.employees = [
     name: "Dr. Steffen Zoller",
     position: "Co-Founder",
     avatar: "example_image_1.jpg",
-    content:
-      "Steffen loves digital, serial entrepreneur in the digital scene. Among others, he co-founded Care.com. He studied business and is an entrepreneur by heart. Currently, he serves as well as Managing Director at kununu.com - European’s leading employer rating platform."
+    content: "Steffen loves digital, serial entrepreneur in the digital scene. Among others, he co-founded Care.com. He studied business and is an entrepreneur by heart. Currently, he serves as well as Managing Director at kununu.com - European’s leading employer rating platform.",
+    contact_user: false
   },
   {
     name: "Carl Neuberger",
     position: "Administration",
     avatar: "example_image_2.jpg",
-    content: "Lorem ipsum dolor sit amed"
+    content: "Lorem ipsum dolor sit amed",
+    contact_user: false
   },
   {
     name: "Laura Pietryga",
     position: "Educational counselling",
     avatar: "example_image_3.jpg",
-    content: "Lorem ipsum dolor sit amed"
+    content: "Lorem ipsum dolor sit amed",
+    contact_user: false
   }
 ];
 exports.pagesgerman = [
@@ -548,3 +550,52 @@ exports.languages = [
     updatedAt: new Date()
   },
 ];
+exports.locations = [
+  {
+    name: "Berlin",
+    street: "Vulkanstraße 1",
+    zip: 10367,
+    latitude: null,
+    longitude: null,
+    email: "berlin@digitalcareerinstitute.org",
+    phone: "030364286190",
+    isCampus: true,
+    avatar: "example_image_1.jpg",
+    order: 1
+  },
+  {
+    name: "Düsseldorf",
+    street: "Grafenberger Allee 87 ",
+    zip: "40237",
+    latitude: 51.2139854,
+    longitude: 6.788534700000014,
+    phone: "021197266691",
+    isCampus: true,
+    avatar: "example_image_2.jpg",
+    order: 3
+  },
+  {
+    name: "Hamburg",
+    street: "Wandalenweg 30",
+    zip: 20097,
+    latitude: 53.55561590000001,
+    longitude: 10.009357200000068,
+    email: "hamburg@digitalcareerinstitute.org",
+    phone: "040882157081",
+    isCampus: true,
+    avatar: "example_image_3.jpg",
+    order: 2
+  },
+  {
+    name: "Leipzig",
+    street: "Markgrafenstraße 2",
+    zip: "04109",
+    latitude: 51.33681079999999,
+    longitude: 12.374217600000065,
+    email: "leipzig@digitalcareerinstitute.org",
+    phone: "015792361169",
+    isCampus: true,
+    avatar: "example_image_1.jpg",
+    order: 3
+  }
+]

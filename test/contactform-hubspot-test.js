@@ -1,11 +1,10 @@
-require("dotenv").config({ path: __dirname + "/../.env" });
+require("dotenv").config({ path: __dirname + "/../.env.test" });
 const Location = require("../models/location");
 const request = require("request");
 const puppeteer = require('puppeteer');
 const email = "testuser@digitalcareerinstitute.org";
 const assert = require('assert');
 const supertest = require("supertest");
-const { url } = require("../helpers/helper.js");
 const mongoose = require("mongoose");
 
 const server = require("../server");
@@ -14,9 +13,8 @@ const server = require("../server");
     describe('Contactform and hubspot contact existence', function () {
         before(function (done) {
             mongoose.connection.on("error", console.error.bind(console, "connection error"));
-            mongoose.connection.once("open", function () {
-                console.log("We are connected to test database!");
-                new Location({
+            mongoose.connection.once("open", async function () {
+                await Location.create({
                     name: "Berlin",
                     street: "Vulkanstrasse 1",
                     zip: "10243"
@@ -24,6 +22,7 @@ const server = require("../server");
                 done();
             });
         });
+
         it('Fills the contact form and submits it', async function () {
             const browser = await puppeteer.launch({
                 defaultViewport: null,

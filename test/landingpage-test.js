@@ -1,4 +1,5 @@
 //const server = require('../server.js')
+const Story = require("../models/story");
 require("dotenv").config({ path: __dirname + "/../.env" });
 var expect = require("chai").expect;
 var chai = require("chai"),
@@ -7,6 +8,9 @@ chai.use(chaiHttp);
 var request = require("supertest");
 
 var server = require("../server");
+const {
+  stories
+} = require("../seeddata");
 //beforeEach(function () {
 
 //});
@@ -15,6 +19,9 @@ var server = require("../server");
 //server.close();
 //});
 describe("Basic DOM tests", function() {
+  before(async function () {
+    await Story.insertMany(stories);
+  })
   it("responds to /", function testSlash(done) {
     request(server)
       .get("/")

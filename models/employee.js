@@ -12,8 +12,7 @@ var EmployeeSchema = new Schema({
   active: String,
   contact_user: {
     type: Boolean,
-    index: true,
-    unique: true
+    index: true
   },
   phone: {
     type: String,
