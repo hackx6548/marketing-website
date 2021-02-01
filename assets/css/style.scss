@@ -1074,6 +1074,9 @@ body:not(.admin) {
 .top-50 {
   top: 50%;
 }
+.left-50 {
+  left: 50%;
+}
 
 .shift-left-percent {
   transform: translateX(50%);
@@ -1117,6 +1120,9 @@ body:not(.admin) {
 }
 .shift-vertical {
   transform: translate(50%, -50%);
+}
+.shift-vertical-negative {
+  transform: translate(-50%, -50%);
 }
 .shift-vertical-md-margin {
   margin-right: -1em;
@@ -1825,6 +1831,9 @@ body[class*="pages-"] {
     width: 100%;
   }
 }
-.word-wrap-break-word{
+.word-wrap-break-word {
   word-wrap: break-word;
+}
+.word-wrap-anywhere {
+  word-wrap: anywhere;
 }
