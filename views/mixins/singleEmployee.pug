@@ -13,4 +13,4 @@ mixin singleEmployee(employee, classes="")
           if employee.locations.length
             .position-relative.z-1.text-right.d-flex.flex-wrap
               each loc in employee.locations
-                a.ml-2.font-weight-bold.text-uppercase.text-primary(title=loc.name href="/contact")= loc.name.substr(0, 3)
+                a.ml-2.font-weight-bold.text-uppercase.text-primary(title=loc.name href="/contact" style=`color: #${loc.color} !important`)= loc.name.substr(0, 3)
