@@ -1197,7 +1197,7 @@ div[class*=" #{$class-slug}"] {
 
 @include media-breakpoint-up(sm) {
   .floatings {
-    transform: translateY(100px);
+    transform: $modal-fade-transform;
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }

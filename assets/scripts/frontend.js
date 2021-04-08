@@ -256,20 +256,21 @@ Array.from(document.querySelectorAll(".ajaxform")).map(form => {
       body: JSON.stringify(payload)
     })
       .then(data => data.json()).then(data => {
-        e.target.querySelector('#contactform_spinner').classList.add("d-none")
-        e.target.querySelector('#contactform_check').classList.remove("d-none")
-        Array.from(e.target.elements).map(i => (i.value = "", i.style.boxShadow = "none"))
-        const flashMessage = document.createElement('div')
-        flashMessage.classList.add("flash", "m-0", "mr-3", "alert", "fade", "show", "alert-success")
-
-        flashMessage.innerHTML = `${data.response.message}<button class="close ml-3" type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>`
-        document.body.appendChild(flashMessage)
         setTimeout(() => {
-          $(".alert").alert("close");
-        }, alertTimeout || 5000);
-        if (data.response.filepath) {
-          window.open(`${window.location.origin}/images/${data.response.filepath}`, '_blank')
-        }
+          e.target.querySelector('#contactform_spinner').classList.add("d-none")
+          e.target.querySelector('#contactform_check').classList.remove("d-none")
+          Array.from(e.target.elements).map(i => (i.value = "", i.style.boxShadow = "none"))
+          $('#contactFormModal').modal('toggle')
+          document.querySelector('#successmodal_text_content').innerText = data.response.message
+          $('#successmodal').modal('toggle')
+
+          setTimeout(() => {
+            $(".alert").alert("close");
+          }, alertTimeout || 5000);
+          if (data.response.filepath) {
+            window.open(`${window.location.origin}/images/${data.response.filepath}`, '_blank')
+          }
+        }, 500);
       })
       .catch(error => {
         e.target.querySelector('button').disabled = false;

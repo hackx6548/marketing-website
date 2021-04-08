@@ -91,11 +91,20 @@ module.exports.contact = async (req, res, next) => {
     const { firstname, lastname, age, email, body, phone, locations, companytour, TermsofService, jobcenter, unemployed } = req.body
     if (age) {
       console.log('Bot stepped into honeypot!')
-      req.flash(
-        'success',
-        res.__(`Thanks for your message`)
-      )
-      res.redirect(req.headers.referer)
+      if (req.headers['content-type'] === 'application/json') {
+        const response = {
+          message: res.__(`Thanks for your message`)
+        }
+        return res.json({
+          response
+        })
+      } else {
+        req.flash(
+          'success',
+          res.__(`Thanks for your message`)
+        )
+        res.redirect(req.headers.referer)
+      }
       next()
       return;
     }

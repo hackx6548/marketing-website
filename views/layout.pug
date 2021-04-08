@@ -190,10 +190,19 @@ html.h-100(lang=locale === "de" ? 'de': 'en')
                           a(href='/pages/' + page.slug class=course && course.coloraccent ? ``: `text-muted` style=course && course.coloraccent ? `color: white` : ``)
                             =page.title
 
+
+      #successmodal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='successmodal', aria-hidden='true')
+        .modal-dialog.modal-dialog-centered.modal-xl
+          .modal-content.bg-light.border-radius-0
+            .modal-body.text-center
+              .mb-5
+                include ../assets/media/success.svg
+              #successmodal_text_content=__("Success! We have received your message and will get back to you as soon as possible.")
+
     if user
       +menuFooter
 
-    #contactFormModal.modal(tabindex='-1', role='dialog', aria-labelledby='contactFormModal', aria-hidden='true')
+    #contactFormModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='contactFormModal', aria-hidden='true')
       .modal-dialog.modal-dialog-centered.modal-xl
         .modal-content.bg-light.border-radius-0
           +contactform
