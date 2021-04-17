@@ -2,24 +2,43 @@ mixin contactform
   form#contactForm.ajaxform(method="POST" action="/contact")
     .row.bg-white
       .col-lg-4.bg-primary.text-white.d-none.d-lg-block
-        .p-5
-          h2 Some text
-          .px-md-3
-            .square.rounded-circle.bg-white.position-relative.w-100
-              .p-4
-                img.object-fit-cover.img-fluid.position-absolute.top-50.left-50.shift-vertical-negative(alt="Women accepting calls" src="/media/callcenter.svg")
+        .px-4.d-flex.flex-column.justify-content-between.h-100
+          .px-xl-3
+            .p-3
+              .p-lg-3.p-xl-5
+                .square.rounded-circle.bg-white.position-relative.w-100
+                  img.object-fit-cover.img-fluid.position-absolute.top-50.left-50.shift-vertical-negative(alt="Women accepting calls" src="/media/callcenter.svg")
+            h2.h6=__("Contact information")
             .my-3.d-flex.align-items-center.word-wrap-anywhere
-              span.d-inline-block.w-1.h-1.mr-1
-                include ../../assets/media/spinner.svg
-              | 030 - 364286190
+              a.d-flex.align-items-center.word-wrap-anywhere.text-white.small(href="tel:004930364286190")
+                .w-2.mr-2
+                  include ../../assets/icons/phone.svg
+                | 030 - 364286190
             .my-3.d-flex.align-items-center.word-wrap-anywhere
-              span.d-inline-block.w-1.h-1.mr-1
-                include ../../assets/media/spinner.svg
-              | contact@digitalcareerinstitute.org
-            .my-3.d-flex.align-items-center.word-wrap-anywhere
-              span.d-inline-block.w-1.h-1.mr-1
-                include ../../assets/media/spinner.svg
+              a.d-flex.align-items-center.word-wrap-anywhere.text-white.small(href="mailto:contact@digitalcareerinstitute.org")
+                .w-2.mr-2
+                  include ../../assets/icons/mail.svg
+                | contact@digitalcareerinstitute.org
+            .my-3.d-flex.align-items-center.word-wrap-anywhere.small
+              .w-2.mr-2
+                include ../../assets/media/pin.svg
               | Vulkanstraße 110367 Berlin
+          
+          ul.list-group.list-group-horizontal.d-flex.justify-content-center.my-lg-4.my-xl-5
+            li.list-group-item.bg-transparent.px-3
+              a(class="" target="_blank" rel="noopener" alt="DCI on Facebook" href="https://www.facebook.com/digitalcareerinstitute") 
+                include ../../assets/icons/facebook.svg
+
+            li.list-group-item.bg-transparent.px-3
+              a(class="" target="_blank" rel="noopener" alt="DCI on Instagram" href="https://www.instagram.com/digitalcareerinstitute/") 
+                include ../../assets/icons/insta.svg
+            li.list-group-item.bg-transparent.px-3
+              a(class="" target="_blank" rel="noopener" alt="DCI on LinkedIn" href="https://www.linkedin.com/school/dci-digital-career-institute/") 
+                include ../../assets/icons/linkedin.svg
+            li.list-group-item.bg-transparent.px-3
+              a(class="" target="_blank" rel="noopener" alt="DCI on Twitter" href="https://www.linkedin.com/school/dci-digital-career-institute/") 
+                include ../../assets/icons/twitter.svg
+
       .col-lg-8
         .mx-md-5.py-3
           .row

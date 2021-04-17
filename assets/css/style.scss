@@ -812,39 +812,6 @@ label {
   display: inline-block;
 }
 
-.icons {
-  width: 48px;
-  height: 48px;
-
-  .btn {
-    transition: background-color $transition ease, color $transition ease;
-  }
-}
-
-/*timeline*/
-.timelineRow {
-  padding: 0;
-}
-
-.timelineRow:last-child .timelineDiv {
-  padding-bottom: 0;
-}
-
-.timelineDiv {
-  display: flex;
-  padding-bottom: 6rem;
-  position: relative;
-}
-
-.timelineDiv:not(:last-child):before {
-  content: "";
-  height: 100%;
-  width: 4px;
-  background: #1d3b8b;
-  position: absolute;
-  left: 33px;
-  top: 0;
-}
 
 .timeline {
   width: 70px;
@@ -860,66 +827,10 @@ label {
   margin-right: 1.5rem;
 }
 
-.successStoryIframe {
-  width: 100%;
-  border: none;
-}
 
 /*************steps to apply***************/
 
-.courseApply {
-  display: flex;
-  margin-top: 2rem;
-}
 
-.courseApply-step {
-  flex: 1;
-  padding-right: 1rem;
-  position: relative;
-}
-
-.courseApply-step:not(:last-child):before {
-  content: "";
-  background: $blue;
-  height: 3px;
-  width: 100%;
-  position: absolute;
-  top: 30px;
-  left: 0;
-}
-
-.courseApply-stepCount {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: $blue;
-  color: white;
-  font-weight: 600;
-  text-align: center;
-  line-height: 60px;
-  margin-bottom: 1rem;
-  display: block;
-  position: relative;
-}
-
-/******************************************
-   SUPER ADMIN/ USERS SECTION
-*******************************************/
-.usersListContainer {
-  border-bottom: 1px solid;
-
-  .usersList {
-    border-top: 1px solid;
-
-    .userInfoHalfWidth {
-      width: 50%;
-    }
-
-    .userInfoFullWidth {
-      width: 100%;
-    }
-  }
-}
 
 /********************************************************
   MEDIA QUERY BREAKPOINT | SINGLE PAGE COURSES !WORK HERE
@@ -928,16 +839,8 @@ label {
 /* Portrait and Landscape */
 
 @media (max-width: 1199.98px) {
-  .courses-scroll {
-    display: none;
-  }
-
   .container-fluid-courses {
     width: 100%;
-  }
-
-  .blue-headline {
-    font-size: 2.5rem;
   }
 }
 

@@ -364,3 +364,4 @@ Array.from(document.querySelectorAll('.dropdown-custom')).map(dropdown => {
     dropdown.querySelector('.dropdown-menu').classList.toggle('show')
   })
 })
+$('#contactFormModal').modal('toggle')
