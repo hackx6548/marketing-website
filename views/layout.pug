@@ -204,11 +204,11 @@ html.h-100(lang=locale === "de" ? 'de': 'en')
 
     #contactFormModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='contactFormModal', aria-hidden='true')
       .modal-dialog.modal-dialog-centered.modal-xl
-        .modal-content.bg-light.border-radius-0
-          +contactform
+        .modal-content.bg-light.border-radius-0.shadow
+          +contactform(( currentPath == "/contact" ? "contact" : "" ))
 
     if currentPath && !currentPath.includes('admin') && !currentPath.includes('users')
-      .modal#dataPrivacy
+      #dataPrivacy.modal.fade(tabindex='-1', role='dialog', aria-labelledby='dataPrivacy', aria-hidden='true')
         +dataPrivacy
     
     if (course && course.curriculumPdf) || currentPath === '/jobcenter'

@@ -1,4 +1,4 @@
-mixin contactform
+mixin contactform(identifier = "")
   form#contactForm.ajaxform(method="POST" action="/contact")
     .row.bg-white
       .col-lg-4.bg-primary.text-white.d-none.d-lg-block
@@ -43,55 +43,55 @@ mixin contactform
         .mx-md-5.py-3
           .row
             .col-md-6.form-group
-              label(for='firstname')=__("Firstname")
-              input#firstname.form-control(name="firstname" type='text',  value=contact ? contact.firstname : '', required)
-              input#track.form-control(name="track" type="hidden" )
+              label(for='firstname'+identifier)=__("Firstname")
+              input.form-control(id="firstname"+identifier name="firstname" type='text',  value=contact ? contact.firstname : '', required)
+              input.form-control(id="track"+identifier name="track" type="hidden" )
             .col-md-6.mb-3.mb-3
-              label(for='lastname')=__("Lastname")
-              input#lastname.form-control(name="lastname" type='text',  value=contact ? contact.lastname : '', required)
+              label(for='lastname'+identifier)=__("Lastname")
+              input.form-control(id="lastname"+identifier name="lastname" type='text',  value=contact ? contact.lastname : '', required)
             .col-md-6.form-group
-              label(for='phone')=__("Phone")
-              input#phone.form-control(name="phone" type='number', pattern="[\+]\d*", value=contact ? contact.phone : '', required)
-              input#age.agefield.form-control(name="age" tabindex="-1" type='text') 
+              label(for='phone'+identifier)=__("Phone")
+              input.form-control(id="phone"+identifier name="phone" type='number', pattern="[\+]\d*", value=contact ? contact.phone : '', required)
+              input.agefield.form-control(id="age"+identifier name="age" tabindex="-1" type='text') 
             .col-md-6.form-group
-              label(for='email')=__("Email")
+              label(for='email'+identifier)=__("Email")
               span.text-muted
-              input#email.form-control(name="email" type='email',  value=contact ? contact.email : '', required)
+              input.form-control(id="email"+identifier name="email" type='email',  value=contact ? contact.email : '', required)
           
             .col-md-6.form-group
               if locations && locations.length > 0
-                label(for='location')=__("Location")
-                select.custom-select.text-muted.form-control(required='', name="locations" id="location")
+                label(for='location'+identifier)=__("Location")
+                select.custom-select.text-muted.form-control(required='', name="locations" id="location"+identifier)
                   option( contact && selected disabled value="")=__("Select...")
                   each location in locations
                     option(value=(location._id) selected=contact && contact.locations && contact.locations[0].toString() === location._id.toString() ?  "selected" :  false )=location.name
             if !companytour
               .col-md-6.form-group
                 p
-                  label(for="unemployed")
+                  label(for="unemployed"+identifier)
                     =__("Are you currently unemployed?")
 
-                  select.custom-select.text-muted.form-control(name="unemployed" id="unemployed" required)
+                  select.custom-select.text-muted.form-control(name="unemployed" id="unemployed"+identifier required)
                     option(selected disabled value="")=__("Select...")
                     option(value="Yes" selected=contact && contact.unemployed == "yes" ? "selected" : false)=__("yes")
                     option(value="No" selected=contact && contact.unemployed == "no" ? "selected" : false)=__("no")
                     option(value="No, but soon" selected=contact && contact.unemployed == "no but soon" ?  "selected" : false )=__("no but soon")
             .col-md-6.form-group
               if courses.length > 0
-                label(for='course')=__("Location")
-                select.custom-select.text-muted.form-control(required='', name="courses" id="course")
+                label(for='course'+identifier)=__("Course of Interest")
+                select.custom-select.text-muted.form-control(required='', name="courses" id="course"+identifier)
                   option( contact && selected disabled value="")=__("Select...")
                   each course in courses
-                    option(value=(course._id) selected=contact && contact.courses && contact.courses[0].toString() === course._id.toString() ?  "selected" :  false )=course.name
+                    option(value=(course._id) selected=contact && contact.courses && contact.courses[0].toString() === course._id.toString() ?  "selected" :  false )=course.headline
             .col-md-6.form-group
               label
                 =__("Are you registered with the Jobcenter or Agentur für Arbeit?") 
-              .custom-control.custom-radio.custom-control-inline
-                input#jobcenter.custom-control-input(type='radio' name='jobcenter')
-                label.px-2.custom-control-label(for='jobcenter')=__("Yes")
-              .custom-control.custom-radio.custom-control-inline
-                input#jobcenter2.custom-control-input(type='radio' name='jobcenter')
-                label.px-2.custom-control-label(for='jobcenter2')=__("No")
+              .custom-control.custom-radio.custom-control-inline.mr-0
+                input.custom-control-input(id="jobcenter"+identifier type='radio' name='jobcenter')
+                label.pl-2.pr-3.custom-control-label(for='jobcenter'+identifier)=__("Yes")
+              .custom-control.custom-radio.custom-control-inline.mr-0
+                input.custom-control-input(id="jobcenter2"+identifier type='radio' name='jobcenter')
+                label.pl-2.pr-3.custom-control-label(for='jobcenter2'+identifier)=__("No")
                 //- p
                 //-   label(for="jobcenter")
                 //-     =__("Are you registered with the Jobcenter or Agentur für Arbeit?")
@@ -101,20 +101,20 @@ mixin contactform
                 //-     option(value=1 selected=contact && contact.jobcenter == true ? "selected" : false)=__("yes")
                 //-     option(value=0 selected=contact && contact.jobcenter == false ? "selected" : false )=__("no")
           .form-group
-            label(for='body')=__("Message")
-            textarea.mb-3#body.form-control(name="body" placeholder=__("Please, write your message here..."), required)=contact ? contact.body : ''
+            label(for='body'+identifier)=__("Message")
+            textarea.mb-3.form-control(id="body"+identifier name="body" placeholder=__("Please enter your message here. Our Career Success Team will reach out to you as soon as possible."), required)=contact ? contact.body : ''
                 
-          p.dataPrivacyLink
+          p
             label.checkbox.TermsofService.text-muted
               =__("Subscribe to our Newsletter")
               input(type='checkbox', name='newsletter', value="true")
               span.checkmark
-          p.dataPrivacyLink
+          p
             label.checkbox.TermsofService.text-muted
               =__("I have read and agree to the")
               input(type='checkbox', name='TermsofService', value="true", required)
               span.checkmark
-            a.ml-1(data-toggle='modal', data-target='#dataPrivacy')=__("Data Privacy")
+            a.ml-1.font-weight-bold.text-dark.text-underline-none.cursor-pointer(data-toggle='modal', data-target='#dataPrivacy')=__("Data Privacy")
           if companytour
             input(type="hidden" name='companytour' checked value="true")
           .text-center

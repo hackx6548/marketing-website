@@ -703,13 +703,6 @@ body:not(.admin) {
     height: 42px;
     border: 1px solid $grey2;
     border-radius: 5px !important;
-
-    &:focus,
-    &:focus-within,
-    &:hover,
-    &:active {
-      background-color: white;
-    }
   }
   select {
     padding: 0 12px;
@@ -720,15 +713,8 @@ label {
 }
 
 ::placeholder {
-  color: $grey3!important;
+  color: $grey3 !important;
 }
-
-
-.dataPrivacyLink {
-  text-decoration: underline;
-}
-
-/******************************************/
 
 .checkbox {
   width: auto;
@@ -1225,11 +1211,6 @@ div[class*=" #{$class-slug}"] {
 body:not(.admin) {
   .form-control {
     background-color: transparent;
-
-    &:focus,
-    &:active {
-      background-color: white !important;
-    }
   }
 }
 

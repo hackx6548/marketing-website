@@ -1,9 +1,9 @@
 mixin dataPrivacy
-  #dataPrivacy.container.modal-dialog-centered
-    .modal-content
+  #dataPrivacy.container.modal-dialog.modal-dialog-centered.modal-xl
+    .modal-content.shadow
       .modal-header.border-0
-        h2#dataPrivacy.display-4.modal-title Data Privacy
-        button.close(type='button', data-dismiss='modal', aria-label='Close')
+        h2#dataPrivacyModal Data Privacy
+        button#dataPrivacyModalCloseButton.close(type='button', data-dismiss='modal', aria-label='Close')
           span(aria-hidden='true') ×
       .modal-body
         p
@@ -11,13 +11,13 @@ mixin dataPrivacy
           |  DCI Digital Career Institute gGmbH
         p
           strong Contact for data privacy:
-          | datenschutzauskunft@digitalcareerinstitute.org
+          |  datenschutzauskunft@digitalcareerinstitute.org
         p
           strong Purpose of Collection of data:
           |  Execution of our service which might require the collection of personal data
         p
           strong Legal basis:
-          | Art. 6 Abs. 1 lit. b DS-GVO
+          |  Art. 6 Abs. 1 lit. b DS-GVO
         p
           strong Recipient of data:
           |  DCI Digital Career Institute gGmbH
@@ -30,8 +30,8 @@ mixin dataPrivacy
           li Right to request information (Art. 15 DS-GVO)
           li Right to have one’s stored information corrected (Art. 16 DS-GVO)
           li Right to have information deleted (Art. 17 par. 1 DS-GVO)
-          li  Right to restrict the processing of data (Art. 18 DS-GVO)
-          li  Right to object (Art. 21 DS-GVO)
+          li Right to restrict the processing of data (Art. 18 DS-GVO)
+          li Right to object (Art. 21 DS-GVO)
           li Transfer of data (Art. 20 DS-GVO)
         p
           | Furthermore affected persons have the right to appeal to the responsible data protection agency (e.g. Landesbeauftragten für den Datenschutz und die Informationsfreiheit Berlin)
