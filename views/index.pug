@@ -9,9 +9,10 @@ block content
           div.m-auto.container.py-md-5
             .row
               .col-md-6.py-5.order-12.order-md-1
-                h1.font-weight-bold.display-1: +translate('Start your')
-                h2.mb-5.display-1.font-weight-bold: +translate('Digital career')
-                p.subtitle.h5.mb-5.text-shadow-light-blue.avoid-polygon1: +translate("Learn digital skills with us to get the most fulfilling jobs")
+                h1.font-weight-bold: +translate('Start your')
+                h1.mb-5.font-weight-bold: +translate('Digital career')
+                p.subtitle.mb-5.text-shadow-light-blue.avoid-polygon1
+                  +translate("Learn digital skills with us to get the most fulfilling jobs")
                 .d-flex
                   a.mb-3.btn.btn-lg.btn-secondary.mr-2.mr-md-4.scrollbutton(href='#ourcourses', role='button'): +translate("Browse Courses")
               .col-md-6.py-5.order-1.order-md-12
@@ -20,7 +21,7 @@ block content
       section#ourcourses.position-relative.offset_title.pb-5
         header.offset_header.text-center
           .d-inline-block.position-relative
-            h2.position-relative.d-inline-block.display-1.text-center.text-white.bg-primary.px-5.py-4
+            h2.position-relative.d-inline-block.text-center.text-white.bg-primary.px-5.py-4
               +translate("Our courses")
         .container.pt-5.text-center
           .row.mx-md-5.justify-content-center
@@ -45,7 +46,7 @@ block content
         .position-relative.offset_title
           header.offset_header.text-left
             .d-inline-block.position-relative
-              h2.position-relative.d-inline-block.display-1.text-center.text-white.bg-primary.px-5.py-4
+              h2.position-relative.d-inline-block.text-center.text-white.bg-primary.px-5.py-4
                 +translate("Mission")
 
 
@@ -118,14 +119,14 @@ block content
                     .col-sm-6.col-md-3
                       .counter-item
                         .counter-number.font-weight-bold
-                          h2.display-1
+                          h2
                             span.counter-count=locals.settings.landingpage_archivements_students || 600
                             = "+"
                         h4.font-weight-bold: +translate("Students")
                     .col-sm-6.col-md-3
                       .counter-item
                         .counter-number.font-weight-bold
-                          h2.display-1
+                          h2
                             span.counter-count=locals.settings.landingpage_archivements_courses || 50
                             = "+"
                         h4.font-weight-bold
@@ -133,14 +134,14 @@ block content
                     .col-sm-6.col-md-3
                       .counter-item
                         .counter-number.font-weight-bold
-                          h2.display-1
+                          h2
                             span.counter-count=locals.settings.landingpage_archivements_tours || 300
                             = "+"
                         h4.font-weight-bold: +translate("Company tours")
                     .col-sm-6.col-md-3
                       .counter-item
                         .counter-number.font-weight-bold
-                          h2.display-1
+                          h2
                             span.counter-count=locals.settings.landingpage_archivements_locations || 5
                         h4.font-weight-bold: +translate("Locations")
 
@@ -148,7 +149,7 @@ block content
       section#stories.my-5.offset_title.position-relative
         header.offset_header.text-right
           .d-inline-block.position-relative
-            h2.position-relative.d-inline-block.display-1.text-center.text-white.bg-primary.px-5.py-4
+            h2.position-relative.d-inline-block.text-center.text-white.bg-primary.px-5.py-4
               +translate("Stories")
 
         if stories
@@ -171,7 +172,7 @@ block content
       if events
         section#events.bg-light.py-5
           .container
-            h2.display-1.text-center: +translate("Upcoming events")
+            h2.text-center: +translate("Upcoming events")
             h3.mb-5.text-center.text-muted: +translate("Meet us in person in several locations in Germany")
             .row.mx-md-5
               each event in events
@@ -181,7 +182,7 @@ block content
             a.btn.btn-lg.btn-secondary.mx-5(href='/events/'): +translate("All Events")
       section.py-5.section-services#partners
         .container.py-5.text-center
-          h2.display-1.text-center.mb-5: +translate("Our Partners")
+          h2.text-center.mb-5: +translate("Our Partners")
           each partner in partners
             if partner.link
               a(href=partner.link target="_blank" rel="noopener")
