@@ -2,14 +2,11 @@ language: node_js
 node_js:
  - "10"
 services: mongodb
-before_script:
-  - npm install --no-optional --production
-  - npm run build-dist  # Build dist folder
-  - npm prune --production 
 script: 
  - "npm test"
 cache:
   directories:
     - "node_modules"
+      
 env:
   - PORT=4000 MONGOURL=mongodb://localhost:27017/marketing-website DOMAIN=localhost

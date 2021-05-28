@@ -57,14 +57,11 @@
     "redis": "^2.8.0",
     "request-promise": "^4.2.6",
     "sass-loader": "^7.1.0",
-    "source-map-support": "^0.5.19",
-    "typescript": "^4.2.3",
     "url-loader": "^3.0.0",
     "webpack-cli": "^3.2.3",
     "xml2json": "^0.11.2"
   },
   "devDependencies": {
-    "@types/redis": "^2.8.28",
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
     "concurrently": "^4.1.2",
@@ -78,11 +75,9 @@
   "scripts": {
     "start": "node ./index.js --use_strict",
     "build": "webpack -p",
-    "build-": "./node_modules/typescript/bin/tsc && cp -a views / && cp -a assets / && cp .env /",
-    "predev": "cp .env dist/",
-    "dev": "concurrently \"redis-server\" \"tsc --watch\" \"webpack --mode development --watch\" \"nodemon --inspect=9229 dist/index.js --ignore 'assets' --ignore 'locales' --ignore 'public' --ignore 'dist'\"  -n \"REDIS,TYPESCRIPT, WEBPACK,NODE\" --prefix name -c \"green.bold,blue.bold,red.bold,yellow.bold\" --use_strict",
-    "seed": "node dist/seeds.js",
-    "seed:delete": "node dist/seeds.js --delete",
+    "dev": "concurrently \"redis-server\" \"webpack --mode development --watch\" \"nodemon --inspect=9229 index.js --ignore 'assets' --ignore 'locales' --ignore 'public'\"  -n \"REDIS,WEBPACK,NODE\" --prefix name -c \"green.bold,red.bold,blue.bold\" --use_strict",
+    "seed": "node seeds.js",
+    "seed:delete": "node seeds.js --delete",
     "test": "NODE_ENV=test mocha test/ --timeout 10000 --exit"
   },
   "keywords": [],

@@ -12,4 +12,3 @@ backup
 *.log
 .idea
 locales/*
-dist/*

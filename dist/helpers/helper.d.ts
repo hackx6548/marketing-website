@@ -1,0 +1,11 @@
+export function groupByKey(items: any, key: any): any;
+export function isAdmin(req: any): boolean;
+export function ensureAuthenticated(req: any, res: any, next: any): any;
+export function redirectNonAdmin(req: any, res: any, next: any): any;
+export function redirectNonSuperAdmin(req: any, res: any, next: any): any;
+export var mongopath: string;
+export function getAsyncRedis(): import("redis").RedisClient | undefined;
+export function getRequestUrl(req: any): string;
+export function sendMail(res: any, req: any, mailOptions: any): Promise<any>;
+export function updateLocaleFile(): Promise<any>;
+export function getFbClid(req: any, res: any, next: any): string | null;
