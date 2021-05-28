@@ -76,13 +76,14 @@
     "webpack": "^4.41.6"
   },
   "scripts": {
-    "start": "node ./dist/index.js --use_strict",
+    "start": "node ./index.js --use_strict",
     "build": "webpack -p",
-    "build-dist": "./node_modules/typescript/bin/tsc && cp -a views dist/views && cp -a assets dist/assets",
-    "dev": "concurrently \"redis-server\" \"webpack --mode development --watch\" \"nodemon --inspect=9229 dist/index.js --ignore 'dist/assets' --ignore 'dist/locales' --ignore 'dist/public'\"  -n \"REDIS,WEBPACK,NODE\" --prefix name -c \"green.bold,red.bold,blue.bold\" --use_strict",
+    "build-": "./node_modules/typescript/bin/tsc && cp -a views / && cp -a assets / && cp .env /",
+    "predev": "cp .env dist/",
+    "dev": "concurrently \"redis-server\" \"tsc --watch\" \"webpack --mode development --watch\" \"nodemon --inspect=9229 dist/index.js --ignore 'assets' --ignore 'locales' --ignore 'public' --ignore 'dist'\"  -n \"REDIS,TYPESCRIPT, WEBPACK,NODE\" --prefix name -c \"green.bold,blue.bold,red.bold,yellow.bold\" --use_strict",
     "seed": "node dist/seeds.js",
     "seed:delete": "node dist/seeds.js --delete",
-    "test": "NODE_ENV=test mocha dist/test/ --timeout 10000 --exit"
+    "test": "NODE_ENV=test mocha test/ --timeout 10000 --exit"
   },
   "keywords": [],
   "author": "",

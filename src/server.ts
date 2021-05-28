@@ -92,17 +92,19 @@ app.use((req, res, next) => {
   res.setLocale(req.params.locale || '');
   next();
 });
+console.log(Date.now());
+
 
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 
 app.use(express.static('public'))
-app.use('/assets', express.static(path.join(__dirname, 'node_modules/')))
-app.use('/assets', express.static(path.join(__dirname, 'assets/css/')))
-app.use('/assets', express.static(path.join(__dirname, 'assets/icons/')))
-app.use('/fonts', express.static(path.join(__dirname, 'assets/fonts/')))
-app.use('/media', express.static(path.join(__dirname, 'assets/media/')))
-app.use('/images', express.static(path.join(__dirname, 'uploads/images')))
+app.use('/assets', express.static(path.join(__dirname, '../', 'node_modules/')))
+app.use('/assets', express.static(path.join(__dirname, '../', 'assets/css/')))
+app.use('/assets', express.static(path.join(__dirname, '../', 'assets/icons/')))
+app.use('/fonts', express.static(path.join(__dirname, '../', 'assets/fonts/')))
+app.use('/media', express.static(path.join(__dirname, '../', 'assets/media/')))
+app.use('/images', express.static(path.join(__dirname, '../', 'uploads/images')))
 // if asset it not found, dont pass missing image request to next and finish with 404 for missing image
 app.use(function (req, res, next) {
   if (req.url.includes("/media/") || req.url.includes("/images/")) {
@@ -303,7 +305,7 @@ app.use(redirects)
 //   res.redirect('/')
 // })
 
-app.set('views', path.join(__dirname, 'views/'))
+app.set('views', path.join(__dirname, '..', 'views/'))
 app.set('view engine', 'pug')
 
 async function worker() {
