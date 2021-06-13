@@ -68,7 +68,9 @@ module.exports = (env, argv) => {
           use: [
             {
               loader: 'file-loader',
-              options: {}
+              options: {
+                esModule: false
+              }
             }
           ]
         },
@@ -94,7 +96,6 @@ module.exports = (env, argv) => {
           test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
           use: ['file-loader']
         },
-        {test: /\.(png|woff|woff2|eot|ttf|svg)$/, use: ['url-loader?limit=100000']}
       ],
     },
 

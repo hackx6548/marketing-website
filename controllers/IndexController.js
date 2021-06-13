@@ -409,32 +409,16 @@ module.exports.downloadCourseCurriculum = async (req, res, next) => {
     let remainingUtmParams = req.session.utmParams ? { ...req.session.utmParams } : []
     Object.keys(remainingUtmParams).map(q => q.startsWith('utm_') && delete remainingUtmParams[q])
     if (!!process.env.HUBSPOT_API_KEY) {
-      let form_payload = {
-        'track': req.headers.referer,
-        'utm_params': remainingUtmParams
-      }
-      if (req.body.answers) {
-        form_payload.anwers = req.body.answers
-      }
-      var options = {
-        method: 'POST',
-        url: `https://api.hubapi.com/contacts/v1/contact/createOrUpdate/email/${email}`,
-        qs: { hapikey: process.env.HUBSPOT_API_KEY },
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: {
-          properties:
-            [
+
+
+      var properties = [
               { property: 'email', value: email },
               { property: 'last_touchpoint', value: 'curriculum_download' },
               {
                 property: 'form_payload',
                 value: JSON.stringify(form_payload)
               }
-            ]
-        }
-      }
+      ];
 
       if (req.session.utmParams && req.session.utmParams.utm_source) {
         properties.push({ property: 'utm_source', value: req.session.utmParams.utm_source })

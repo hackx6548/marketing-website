@@ -67,7 +67,17 @@ function QuestionsDiagram() {
               eventDidFire: (e) => {
                 e.stopPropagation();
                 e.isSelected ? setbutton('update') : setbutton('add')
-                setForm({ ...form, "question": e.isSelected && item.options.extras.customType !== "answer" ? item.options.name : "", 'questionidentifier': e.isSelected ? item.options.extras.questionidentifier : "", "answer": e.isSelected && item.options.extras.customType === "answer" ? item.options.name : "" })
+                setTimeout(() => {
+                  const newForm = {
+                    "question": e.isSelected && item.options.extras.customType === "question" ? item.options.name : "",
+                    'questionidentifier': e.isSelected ? item.options.extras.questionidentifier : "",
+                    'questiontranslation': e.isSelected ? item.options.extras.questiontranslation : "",
+                    "answer": e.isSelected && item.options.extras.customType === "answer" ? item.options.name : "",
+                    "answeridentifier": e.isSelected ? item.options.extras.answeridentifier : "",
+                    "answertranslation": e.isSelected ? item.options.extras.answertranslation : ""
+                  }
+                  setForm({ ...form, ...newForm })
+                }, 100);
               }
             });
           });
@@ -88,13 +98,15 @@ function QuestionsDiagram() {
       node = selectedNodes[0]
       node.options.name = form['question']
       node.options.extras.questionidentifier = form['questionidentifier']
+      node.options.extras.questiontranslation = form['questiontranslation']
     } else {
       node = new CustomNodeModel({
         name: `${e.target.elements.addquestion.value}`,
         color: e.target.elements.addquestion.dataset.color,
         extras: {
           customType: e.target.elements.addquestion.dataset.type,
-          questionidentifier: e.target.elements.addquestionidentifier.value
+          questionidentifier: e.target.elements.addquestionidentifier.value,
+          questiontranslation: e.target.elements.addquestiontranslation.value
         }
       });
       node.setPosition(engine.canvas.offsetWidth / 2, engine.canvas.offsetHeight / 2);
@@ -111,15 +123,19 @@ function QuestionsDiagram() {
     if (selectedNodes.length === 1) {
       node = selectedNodes[0]
       node.options.name = form['answer']
+      node.options.extras.dropdown = form['dropdown']
+      node.options.extras.answeridentifier = form['answeridentifier']
+      node.options.extras.answertranslation = form['answertranslation']
     } else {
       node = new CustomNodeModel({
-        name: !!e.target.elements.freeanswer && !!e.target.elements.freeanswer.checked ? "Freeanswer" : e.target.elements.answer.value,
-        color: !!e.target.elements.freeanswer && !!e.target.elements.freeanswer.checked ? "rgb(0, 128, 229)" : e.target.elements.answer.dataset.color,
+        name: e.target.elements.answer.value,
+        color: !!e.target.elements.freeanswer && !!e.target.elements.freeanswer.checked ? "rgb(182, 133, 1)" : e.target.elements.answer.dataset.color,
         extras: {
           customType: e.target.elements.answer.dataset.type,
           freeanswer: !!e.target.elements.freeanswer && !!e.target.elements.freeanswer.checked,
           dropdown: !!e.target.elements.dropdown && !!e.target.elements.dropdown.checked,
-          answeridentifier: e.target.elements.answeridentifier.value
+          answeridentifier: e.target.elements.answeridentifier.value,
+          answertranslation: e.target.elements.answertranslation.value
         }
       });
       node.setPosition(engine.canvas.offsetWidth / 2, engine.canvas.offsetHeight / 2);
@@ -183,43 +199,59 @@ function QuestionsDiagram() {
       setloading(false)
     })
   }
-  const createPredefinedButton = (e) => {
-    e.preventDefault()
-    const node = new CustomNodeModel({
-      name: `${e.target.dataset.field}`,
-      color: questioncolor,
-      extras: {
-        customType: "question",
-        questionidentifier: e.target.dataset.field
-      }
-    });
-    console.log('Enginesize', engine.canvas.offsetWidth, engine.canvas.offsetHeight);
-    node.setPosition(engine.canvas.offsetWidth / 2, engine.canvas.offsetHeight / 2);
-    node.addInPort('In');
-    node.addOutPort('Out');
-    model.addAll(node);
-    engine.setModel(model);
-  }
+  // const createPredefinedButton = (e) => {
+  //   e.preventDefault()
+  //   const node = new CustomNodeModel({
+  //     name: `${e.target.dataset.field}`,
+  //     color: questioncolor,
+  //     extras: {
+  //       customType: "question",
+  //       questionidentifier: e.target.dataset.field
+  //     }
+  //   });
+  //   console.log('Enginesize', engine.canvas.offsetWidth, engine.canvas.offsetHeight);
+  //   node.setPosition(engine.canvas.offsetWidth / 2, engine.canvas.offsetHeight / 2);
+  //   node.addInPort('In');
+  //   node.addOutPort('Out');
+  //   model.addAll(node);
+  //   engine.setModel(model);
+  // }
   return (
     <div className="h-100 d-flex flex-column">
       <div>
         <form onSubmit={addQuestion}>
-          <div className="form-group">
-            <label htmlFor="addquestion">Add Question</label>
-            <input className="form-control" name="question" type="text" value={form['question']}
-              onChange={(e) => {
-                e.stopPropagation();
-                setForm({ ...form, [e.target.name]: e.target.value })
-              }} data-type="question" data-color={questioncolor} style={{ borderColor: { questioncolor }, borderStyle: "solid" }} id="addquestion" required />
-            <label htmlFor="addquestionidentifier">Questionidentifier</label>
-            <input className="form-control" name="questionidentifier" type="text" value={form['questionidentifier']}
-              onChange={(e) => {
-                e.stopPropagation();
-                setForm({ ...form, [e.target.name]: e.target.value })
-              }} data-type="questionidentifier" data-color={questioncolor} style={{ borderColor: { questioncolor }, borderStyle: "solid" }} id="addquestionidentifier" required />
+          <div className=" row">
+            <div className="col-md-4">
+              <label htmlFor="addquestion">Add Question</label>
+              <input className="form-control" name="question" type="text" value={form['question']}
+                onChange={(e) => {
+                  e.stopPropagation();
+                  setForm({ ...form, [e.target.name]: e.target.value })
+                }} data-type="question" data-color={questioncolor} style={{ borderColor: { questioncolor }, borderStyle: "solid" }} id="addquestion" required />
+            </div>
+            <div className="col-md-4">
+              <label htmlFor="addquestiontranslation">DE Questiontranslation</label>
+              <input className="form-control" name="questiontranslation" type="text" value={form['questiontranslation']}
+                onChange={(e) => {
+                  e.stopPropagation();
+                  setForm({ ...form, [e.target.name]: e.target.value })
+                }} data-type="questiontranslation" data-color={questioncolor} style={{ borderColor: { questioncolor }, borderStyle: "solid" }} id="addquestiontranslation" required />
+            </div>
+            <div className="col-md-4">
+              <div className='d-flex align-items-end'>
+                <div className="w-100">
+                  <label htmlFor="addquestionidentifier">Questionidentifier</label>
+                  <input className="form-control" name="questionidentifier" type="text" value={form['questionidentifier']}
+                    onChange={(e) => {
+                      e.stopPropagation();
+                      setForm({ ...form, [e.target.name]: e.target.value })
+                    }} data-type="questionidentifier" data-color={questioncolor} style={{ borderColor: { questioncolor }, borderStyle: "solid" }} id="addquestionidentifier" required />
+                </div>
+                <button className="btn btn-primary ml-1" type="submit">{button}</button>
+              </div>
+            </div>
           </div>
-          <div classNamed="d-flex">
-          <button className="btn btn-primary" type="submit">{button}</button>
+          {/* <div classNamed="d-flex">
             <span className="mx-2">Or add predefined Hubspot keys:</span>
             <button className="btn btn-primary" onClick={(e) => {
               createPredefinedButton(e)
@@ -233,43 +265,58 @@ function QuestionsDiagram() {
             <button className="btn btn-primary" onClick={(e) => {
               createPredefinedButton(e)
             }} data-field="phone">Phone</button>
-          </div>
+          </div> */}
         </form>
 
         <form className="" onSubmit={addAnswer}>
-          <div className="form-group w-100">
-
-            <label htmlFor="addanswer">Add Answer</label>
-            <input className="form-control w-100" name="answer" value={form['answer']}
-              onChange={(e) => {
-                e.stopPropagation();
-                setForm({ ...form, [e.target.name]: e.target.value })
-              }} type="text" data-type="answer" data-color="rgb(255, 204, 1)" style={{ borderColor: "rgb(255, 204, 1)", borderStyle: "solid" }} id="addanswer" disabled={!answeravailable} />
-
-            <label htmlFor="answeridentifier">Questionidentifier</label>
-            <input className="form-control w-100" name="answeridentifier" type="text" value={form['answeridentifier']}
-              onChange={(e) => {
-                e.stopPropagation();
-                setForm({ ...form, [e.target.name]: e.target.value })
-              }} data-type="answeridentifier" data-color={questioncolor} style={{ borderColor: "rgb(255, 204, 1)", borderStyle: "solid" }} id="answeridentifier" required />
-
+          <div className=" row">
+            <div className="col-md-4">
+              <label htmlFor="addanswer">Add Answer</label>
+              <input className="form-control w-100" name="answer" value={form['answer']}
+                onChange={(e) => {
+                  e.stopPropagation();
+                  setForm({ ...form, [e.target.name]: e.target.value })
+                }} type="text" data-type="answer" data-color="rgb(255, 204, 1)" style={{ borderColor: "rgb(255, 204, 1)", borderStyle: "solid" }} id="addanswer" />
+            </div>
+            <div className="col-md-4">
+              <label htmlFor="answertranslation">Questitranslation</label>
+              <input className="form-control w-100" name="answertranslation" type="text" value={form['answertranslation']}
+                onChange={(e) => {
+                  e.stopPropagation();
+                  setForm({ ...form, [e.target.name]: e.target.value })
+                }} data-type="answertranslation" data-color={questioncolor} style={{ borderColor: "rgb(255, 204, 1)", borderStyle: "solid" }} id="answertranslation" required />
+            </div>
+            <div className="col-md-4">
+              <div className='d-flex align-items-end'>
+                <div className="w-100">
+                  <label htmlFor="answeridentifier">Questionidentifier</label>
+                  <input className="form-control w-100" name="answeridentifier" type="text" value={form['answeridentifier']}
+                    onChange={(e) => {
+                      e.stopPropagation();
+                      setForm({ ...form, [e.target.name]: e.target.value })
+                    }} data-type="answeridentifier" data-color={questioncolor} style={{ borderColor: "rgb(255, 204, 1)", borderStyle: "solid" }} id="answeridentifier" required />
+                </div>
+                <button className="btn btn-primary ml-1" type="submit">{button}</button>
+              </div>
+            </div>
           </div>
-          <button className="btn btn-primary" type="submit">{button}</button>
-          <div className="form-group w-100">
-            <div className="form-group form-check  mb-3">
+          <div className="d-flex w-100 mt-2">
+            <div className="form-check d-flex align-items-center mr-3 mb-3">
               <input type="checkbox" name="freeanswer" className="form-check-input"
                 onChange={(e) => {
                   e.stopPropagation();
                   setForm({ ...form, [e.target.name]: e.target.value })
-                }} style={{ borderColor: "rgb(255, 204, 1)", borderStyle: "solid" }} id="freeanswer" onChange={() => setansweravailable(!answeravailable)} />
+                }} style={{ borderColor: "rgb(255, 204, 1)", borderStyle: "solid" }} id="freeanswer" />
               <label className="form-check-label" htmlFor="freeanswer">Free answer</label>
+            </div>
+            <div className="form-group form-check d-flex align-items-center mr-3 mb-3">
               <input type="checkbox" name="dropdown" className="form-check-input"
                 onChange={(e) => {
                   e.stopPropagation();
                   setForm({ ...form, [e.target.name]: e.target.value })
                 }} style={{ borderColor: "rgb(255, 204, 1)", borderStyle: "solid" }} id="dropdown" />
               <label className="form-check-label" htmlFor="dropdown">Is dropdown</label>
-              <button className="btn btn-secondary badge ml-2" type="button" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="comma seperated list build the dropdown" data-original-title="" title=""> ? </button>
+              <button className="btn btn-secondary badge ml-2" type="button" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="If checked, use a comma seperated list to define the list items: 'Option 1, Option 2, Option 3'" data-original-title="" title=""> ? </button>
             </div>
           </div>
         </form>
