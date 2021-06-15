@@ -395,12 +395,15 @@ module.exports.downloadCourseCurriculum = async (req, res, next) => {
 
 
       var properties = [
-              { property: 'email', value: email },
-              { property: 'last_touchpoint', value: 'curriculum_download' },
-              {
-                property: 'form_payload',
-                value: JSON.stringify(form_payload)
-              }
+        { property: 'email', value: email },
+        { property: 'last_touchpoint', value: 'curriculum_download' },
+        {
+          property: 'form_payload',
+          value: JSON.stringify({
+            'track': req.headers.referer,
+            'utm_params': remainingUtmParams
+          })
+        }
       ];
 
       if (req.session.utmParams && req.session.utmParams.utm_source) {
