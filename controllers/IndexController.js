@@ -182,22 +182,22 @@ module.exports.contact = async (req, res, next) => {
     if (!!process.env.HUBSPOT_API_KEY) {
       let fbclid = getFbClid(req, res, next);
       var properties = [
-              { property: 'firstname', value: firstname },
-              { property: 'lastname', value: lastname },
-              { property: 'email', value: email },
-              { property: 'phone', value: phone },
-              { property: 'hs_facebook_click_id', value: fbclid },
-              { property: 'last_touchpoint', value: signup_form ? 'website_lead_form' : 'website_contact_form' },
-              {
-                property: 'form_payload',
-                value: JSON.stringify({
-                  'track': req.headers.referer,
-                  'locations': location,
-                  'body': body,
-                  'is_company': companytour,
-                  'utm_params': remainingUtmParams
-                })
-              }
+        { property: 'firstname', value: firstname },
+        { property: 'lastname', value: lastname },
+        { property: 'email', value: email },
+        { property: 'phone', value: phone },
+        { property: 'hs_facebook_click_id', value: fbclid },
+        { property: 'last_touchpoint', value: signup_form ? 'website_lead_form' : 'website_contact_form' },
+        {
+          property: 'form_payload',
+          value: JSON.stringify({
+            'track': req.headers.referer,
+            'locations': location,
+            'body': body,
+            'is_company': companytour,
+            'utm_params': remainingUtmParams
+          })
+        }
       ];
 
 
@@ -249,9 +249,6 @@ module.exports.contact = async (req, res, next) => {
       };
       hubspotPromise = requestPromise(options)
     }
-    // TODO remove logging statement
-    console.log(req.session);
-    console.log(options.body.properties);
     // to save time, mail get send out without waiting for the response
     const info = sendMail(res, req, mailOptions)
     const result = await Promise.all([hubspotPromise])
@@ -398,15 +395,15 @@ module.exports.downloadCourseCurriculum = async (req, res, next) => {
 
 
       var properties = [
-              { property: 'email', value: email },
-              { property: 'last_touchpoint', value: 'curriculum_download' },
-              {
-                property: 'form_payload',
-                value: JSON.stringify({
-                  'track': req.headers.referer,
-                  'utm_params': remainingUtmParams
-                })
-              }
+        { property: 'email', value: email },
+        { property: 'last_touchpoint', value: 'curriculum_download' },
+        {
+          property: 'form_payload',
+          value: JSON.stringify({
+            'track': req.headers.referer,
+            'utm_params': remainingUtmParams
+          })
+        }
       ];
 
       if (req.session.utmParams && req.session.utmParams.utm_source) {
