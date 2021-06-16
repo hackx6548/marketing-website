@@ -42,7 +42,7 @@ module.exports.landingpage = async (req, res) => {
         .sort('order')
         .exec({})
       const partners = Partner.find({ ...query }, 'link title partnerlogo is_alumni_employer')
-      .sort('order')
+        .sort('order')
         .exec({})
       const courses = Course
         .find(query, 'icon headline slug subheading courselength')
@@ -73,7 +73,7 @@ module.exports.landingpage = async (req, res) => {
 }
 module.exports.contactLocations = async (req, res) => {
   const locations = await Location.find({}).populate('contactEmployee').sort({ order: 1 }).exec();
-  const sortedEmployees = locations.map(l => l.contactEmployee.sort((a,b) => a.order - b.order))
+  const sortedEmployees = locations.map(l => l.contactEmployee.sort((a, b) => a.order - b.order))
   locations.contactEmployee = sortedEmployees
   const contact = req.body
   res.render('contactLocations', {
@@ -180,60 +180,16 @@ module.exports.contact = async (req, res, next) => {
 
     if (!!process.env.HUBSPOT_API_KEY) {
       let fbclid = getFbClid(req, res, next);
-      var properties = [
-              { property: 'firstname', value: firstname },
-              { property: 'lastname', value: lastname },
-              { property: 'email', value: email },
-              { property: 'phone', value: phone },
-              { property: 'hs_facebook_click_id', value: fbclid },
-              { property: 'last_touchpoint', value: signup_form? 'website_lead_form' : 'website_contact_form' },
-              {
-                property: 'form_payload',
-                value: JSON.stringify({
-                  'track': req.headers.referer,
-                  'locations': location,
-                  'body': body,
-                  'is_company': companytour,
-                  'utm_params': remainingUtmParams
-                })
-              }
-            ];
-
-
-      if(location){
-        properties.push({property: 'state_de_', value: location.name } )  
+      let form_payload = {
+        'track': req.headers.referer,
+        'locations': location,
+        'body': body,
+        'is_company': companytour,
+        'utm_params': remainingUtmParams
       }
-      if(jobcenter !== undefined){
-        properties.push({property: 'afa_jc_registered_', value: !jobcenter ? "No" : "Yes" } ) 
+      if (req.body.answers) {
+        form_payload.anwers = req.body.answers
       }
-      if(unemployed){
-        properties.push({property: 'form_are_you_currently_unemployed', value: unemployed} ) 
-      }
-      if(age_years){
-        properties.push({property: 'age', value: age_years} ) 
-      }
-      if(language_german){
-        properties.push({property: 'language_level_english', value: language_german} ) 
-      }
-      if(language_english){
-        properties.push({property: 'language_level_german', value: language_english} ) 
-      }
-      if(req.session.utmParams && req.session.utmParams.utm_source){
-        properties.push({property: 'utm_source', value: req.session.utmParams.utm_source} ) 
-      }
-      if(req.session.utmParams && req.session.utmParams.utm_medium){
-        properties.push({property: 'utm_medium', value: req.session.utmParams.utm_medium} ) 
-      }
-      if(req.session.utmParams && req.session.utmParams.utm_campaign){
-        properties.push({property: 'utm_campaign', value: req.session.utmParams.utm_campaign} ) 
-      }
-      if(req.session.utmParams && req.session.utmParams.utm_content){
-        properties.push({property: 'utm_content', value: req.session.utmParams.utm_content} ) 
-      }
-      if(req.session.utmParams && req.session.utmParams.utm_term){
-        properties.push({property: 'utm_term', value: req.session.utmParams.utm_term} ) 
-      }
-
       var options = {
         method: 'POST',
         url: `https://api.hubapi.com/contacts/v1/contact/createOrUpdate/email/${email}`,
@@ -242,43 +198,100 @@ module.exports.contact = async (req, res, next) => {
           'Content-Type': 'application/json'
         },
         body: {
-          properties: properties,
-        },
-        json: true
-      };
-      hubspotPromise = requestPromise(options)
+          properties:
+            [
+              { property: 'firstname', value: firstname },
+              { property: 'lastname', value: lastname },
+              { property: 'email', value: email },
+              { property: 'phone', value: phone },
+              { property: 'hs_facebook_click_id', value: fbclid },
+              { property: 'last_touchpoint', value: signup_form ? 'website_lead_form' : 'website_contact_form' },
+              {
+                property: 'form_payload',
+                value: JSON.stringify(form_payload)
+              }
+            ];
+
+
+          if(location) {
+            properties.push({ property: 'state_de_', value: location.name })
+          }
+      if(jobcenter !== undefined){
+          properties.push({ property: 'afa_jc_registered_', value: !jobcenter ? "No" : "Yes" })
     }
+    if (unemployed) {
+      properties.push({ property: 'form_are_you_currently_unemployed', value: unemployed })
+    }
+    if (age_years) {
+      properties.push({ property: 'age', value: age_years })
+    }
+    if (language_german) {
+      properties.push({ property: 'language_level_english', value: language_german })
+    }
+    if (language_english) {
+      properties.push({ property: 'language_level_german', value: language_english })
+    }
+    if (req.session.utmParams && req.session.utmParams.utm_source) {
+      properties.push({ property: 'utm_source', value: req.session.utmParams.utm_source })
+    }
+    if (req.session.utmParams && req.session.utmParams.utm_medium) {
+      properties.push({ property: 'utm_medium', value: req.session.utmParams.utm_medium })
+    }
+    if (req.session.utmParams && req.session.utmParams.utm_campaign) {
+      properties.push({ property: 'utm_campaign', value: req.session.utmParams.utm_campaign })
+    }
+    if (req.session.utmParams && req.session.utmParams.utm_content) {
+      properties.push({ property: 'utm_content', value: req.session.utmParams.utm_content })
+    }
+    if (req.session.utmParams && req.session.utmParams.utm_term) {
+      properties.push({ property: 'utm_term', value: req.session.utmParams.utm_term })
+    }
+
+    var options = {
+      method: 'POST',
+      url: `https://api.hubapi.com/contacts/v1/contact/createOrUpdate/email/${email}`,
+      qs: { hapikey: process.env.HUBSPOT_API_KEY },
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: {
+        properties: properties,
+      },
+      json: true
+    };
+    hubspotPromise = requestPromise(options)
+  }
     // TODO remove logging statement
     console.log(req.session);
-    console.log(options.body.properties);
-    // to save time, mail get send out without waiting for the response
-    const info = sendMail(res, req, mailOptions)
-    const result = await Promise.all([hubspotPromise])
+  console.log(options.body.properties);
+  // to save time, mail get send out without waiting for the response
+  const info = sendMail(res, req, mailOptions)
+  const result = await Promise.all([hubspotPromise])
 
-    if (req.headers['content-type'] === 'application/json') {
-      const response = {
-        message: res.__(`Thanks for your message`),
-        contact_id: contact.id
-      }
-      return res.json({
-        response
-      })
-    } else {
-      req.flash(
-        'success',
-        res.__(`Thanks for your message`)
-      );
-      res.redirect(req.headers.referer)
+  if (req.headers['content-type'] === 'application/json') {
+    const response = {
+      message: res.__(`Thanks for your message`),
+      contact_id: contact.id
     }
-    delete req.session.utmParams
-    next()
-  } catch (e) {
-    console.error(`Error in /controllers/IndexController.js`)
-    console.error(e)
-
-    req.flash('danger', e.message);
+    return res.json({
+      response
+    })
+  } else {
+    req.flash(
+      'success',
+      res.__(`Thanks for your message`)
+    );
     res.redirect(req.headers.referer)
   }
+  delete req.session.utmParams
+  next()
+} catch (e) {
+  console.error(`Error in /controllers/IndexController.js`)
+  console.error(e)
+
+  req.flash('danger', e.message);
+  res.redirect(req.headers.referer)
+}
 }
 module.exports.tour = async (req, res) => {
   try {
@@ -394,36 +407,13 @@ module.exports.downloadCourseCurriculum = async (req, res, next) => {
     let remainingUtmParams = req.session.utmParams ? { ...req.session.utmParams } : []
     Object.keys(remainingUtmParams).map(q => q.startsWith('utm_') && delete remainingUtmParams[q])
     if (!!process.env.HUBSPOT_API_KEY) {
-      
-
-      var properties = [
-              { property: 'email', value: email },
-              { property: 'last_touchpoint', value: 'curriculum_download'},
-              {
-                property: 'form_payload',
-                value: JSON.stringify({
-                  'track': req.headers.referer,
-                  'utm_params': remainingUtmParams
-                })
-              }
-            ];
-
-      if(req.session.utmParams && req.session.utmParams.utm_source){
-        properties.push({property: 'utm_source', value: req.session.utmParams.utm_source} ) 
+      let form_payload = {
+        'track': req.headers.referer,
+        'utm_params': remainingUtmParams
       }
-      if(req.session.utmParams && req.session.utmParams.utm_medium){
-        properties.push({property: 'utm_medium', value: req.session.utmParams.utm_medium} ) 
+      if (req.body.answers) {
+        form_payload.anwers = req.body.answers
       }
-      if(req.session.utmParams && req.session.utmParams.utm_campaign){
-        properties.push({property: 'utm_campaign', value: req.session.utmParams.utm_campaign} ) 
-      }
-      if(req.session.utmParams && req.session.utmParams.utm_content){
-        properties.push({property: 'utm_content', value: req.session.utmParams.utm_content} ) 
-      }
-      if(req.session.utmParams && req.session.utmParams.utm_term){
-        properties.push({property: 'utm_term', value: req.session.utmParams.utm_term} ) 
-      }
-
       var options = {
         method: 'POST',
         url: `https://api.hubapi.com/contacts/v1/contact/createOrUpdate/email/${email}`,
@@ -432,38 +422,72 @@ module.exports.downloadCourseCurriculum = async (req, res, next) => {
           'Content-Type': 'application/json'
         },
         body: {
-          properties: properties,
-        },
-        json: true
-      };
-      hubspotPromise = request(options)
+          properties:
+            [
+              { property: 'email', value: email },
+              { property: 'last_touchpoint', value: 'curriculum_download' },
+              {
+                property: 'form_payload',
+                value: JSON.stringify(form_payload)
+              }
+            ];
+
+          if(req.session.utmParams && req.session.utmParams.utm_source){
+            properties.push({ property: 'utm_source', value: req.session.utmParams.utm_source })
     }
+    if (req.session.utmParams && req.session.utmParams.utm_medium) {
+      properties.push({ property: 'utm_medium', value: req.session.utmParams.utm_medium })
+    }
+    if (req.session.utmParams && req.session.utmParams.utm_campaign) {
+      properties.push({ property: 'utm_campaign', value: req.session.utmParams.utm_campaign })
+    }
+    if (req.session.utmParams && req.session.utmParams.utm_content) {
+      properties.push({ property: 'utm_content', value: req.session.utmParams.utm_content })
+    }
+    if (req.session.utmParams && req.session.utmParams.utm_term) {
+      properties.push({ property: 'utm_term', value: req.session.utmParams.utm_term })
+    }
+
+    var options = {
+      method: 'POST',
+      url: `https://api.hubapi.com/contacts/v1/contact/createOrUpdate/email/${email}`,
+      qs: { hapikey: process.env.HUBSPOT_API_KEY },
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: {
+        properties: properties,
+      },
+      json: true
+    };
+    hubspotPromise = request(options)
+  }
     const resolved = await Promise.all([hubspotPromise])
 
-    if (req.headers['content-type'] === 'application/json') {
-      const response = {
-        message: res.__(`Thanks for your message`),
-        filepath: course.curriculumPdf,
-        contact_id: contact.id
-      }
-      return res.json({
-        response
-      })
-    } else {
-      req.flash(
-        'success',
-        res.__(`Thanks for your message`)
-      );
-      res.redirect(req.headers.referer)
+  if (req.headers['content-type'] === 'application/json') {
+    const response = {
+      message: res.__(`Thanks for your message`),
+      filepath: course.curriculumPdf,
+      contact_id: contact.id
     }
-    delete req.session.utmParams
-    next()
-  } catch (e) {
-    console.error(`Error in /controllers/IndexController.js`)
-    console.error(e)
-    req.flash('danger', e.message);
+    return res.json({
+      response
+    })
+  } else {
+    req.flash(
+      'success',
+      res.__(`Thanks for your message`)
+    );
     res.redirect(req.headers.referer)
   }
+  delete req.session.utmParams
+  next()
+} catch (e) {
+  console.error(`Error in /controllers/IndexController.js`)
+  console.error(e)
+  req.flash('danger', e.message);
+  res.redirect(req.headers.referer)
+}
 }
 module.exports.jobcenter = async (req, res) => {
   try {
