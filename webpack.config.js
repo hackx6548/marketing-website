@@ -41,7 +41,7 @@ module.exports = (env, argv) => {
               options: {
                 ident: "postcss",
                 plugins: [
-                  require("autoprefixer")({browsers: "last 3 versions"})
+                  require("autoprefixer")({ browsers: "last 3 versions" })
                 ]
               }
             },
@@ -69,6 +69,7 @@ module.exports = (env, argv) => {
             {
               loader: 'file-loader',
               options: {
+                name: "[name].[ext]",
                 esModule: false
               }
             }
@@ -91,10 +92,6 @@ module.exports = (env, argv) => {
         }, {
           test: /\.svg$/,
           use: ['svg-loader']
-        },
-        {
-          test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
-          use: ['file-loader']
         },
       ],
     },
