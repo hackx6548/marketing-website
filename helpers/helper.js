@@ -1,6 +1,6 @@
 const path = require("path");
-require("dotenv").config({path: path.resolve(__dirname, ".env")});
-const {promisify} = require("util");
+require("dotenv").config({ path: path.resolve(__dirname, ".env") });
+const { promisify } = require("util");
 const fs = require('fs')
 const nodemailer = require("nodemailer");
 const passport = require("passport");
@@ -143,11 +143,11 @@ exports.updateLocaleFile = async () => {
     stringtranslations.map(strTrans => {
 
       strTrans.translations.map(string => {
-        if (!!string.language){
-        locales[string.language.title] = locales[string.language.title] ? {
-          ...locales[string.language.title],
-          [strTrans.title]: string.title
-        } : {[strTrans.title]: string.title}
+        if (!!string.language) {
+          locales[string.language.title] = locales[string.language.title] ? {
+            ...locales[string.language.title],
+            [strTrans.title]: string.title
+          } : { [strTrans.title]: string.title }
         }
       })
     });
@@ -174,7 +174,7 @@ exports.getFbClid = (req, res, next) => {
 }
 
 exports.jsonResponseObject = async (res, payload, error = undefined) => {
-  return res.json({payload, error})
+  return res.json({ payload, error })
 }
 exports.searchFilesInDirectoryAsync = async (dir, filter, ext) => {
   const localesFolder = path.resolve(__dirname, "../", "locales");
