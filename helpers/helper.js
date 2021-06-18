@@ -173,9 +173,6 @@ exports.getFbClid = (req, res, next) => {
   return fbclid[0]
 }
 
-exports.jsonResponseObject = async (res, payload, error = undefined) => {
-  return res.json({ payload, error })
-}
 exports.searchFilesInDirectoryAsync = async (dir, filter, ext) => {
   const localesFolder = path.resolve(__dirname, "../", "locales");
   const enContent = JSON.parse(fs.readFileSync(`${localesFolder}/en.json`, { encoding: 'utf-8' }))
@@ -196,7 +193,7 @@ exports.searchFilesInDirectoryAsync = async (dir, filter, ext) => {
   }
   const databaseStringtranslations = await Stringtranslation.find()
   const missingTemplateKeysInDatabase = [...templateTranslations].filter(tt => {
-    return !databaseStringtranslations.map(i => i.title).includes(tt)
+    return !databaseStringtranslations.map(i => i.title).includes(tt.replace(/\\/, ''))
   })
   return missingTemplateKeysInDatabase
 }
@@ -222,4 +219,7 @@ const getFilesInDirectoryAsync = async (dir, ext) => {
   };
 
   return files;
+}
+exports.jsonResponseObject = async (res, payload, error = undefined) => {
+  return res.json({ payload, error })
 }

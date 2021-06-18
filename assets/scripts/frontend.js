@@ -194,16 +194,6 @@ $("#contactFormModal").on("hidden.bs.modal", function (e) {
   window.history.replaceState({}, "/", window.history.state);
 });
 
-$("#signupFormModal").on("shown.bs.modal", function (e) {
-  window.document.querySelector("#track").value = window.location.href;
-  window.history.replaceState(window.location.pathname, "/", `/`);
-});
-
-$("#signupFormModal").on("hidden.bs.modal", function (e) {
-  window.document.querySelector("#track").value = "";
-  window.history.replaceState({}, "/", window.history.state);
-});
-
 // $('[data-spy="scroll"]').on('activate.bs.scrollspy', function () {
 //   console.debug("yo")
 // })
@@ -582,11 +572,12 @@ const jumpToNextQuestion = (e, diagramNodes, model) => {
       },
       body: JSON.stringify(payload)
     }).then(res => res.json())
-      .then(res => {
-        questionroot.querySelector('#popup').innerHTML = `<h2>Thanks</h2>`
-        // setTimeout(() => {
-        //   questionroot.innerHTML = ``
-        // }, 2000);
+      .then(data => {
+        questionroot.querySelector('#popup').innerHTML = `<h2 class="text-center">Thanks</h2>`
+        setTimeout(() => {
+          window.location.replace(`${window.location.origin}/thank-you/${data.response.contact_id}`);
+          questionroot.innerHTML = ``
+        }, 500);
         localStorage.removeItem('dcianswers')
       })
   }
