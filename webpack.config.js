@@ -87,7 +87,7 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.jsx?$/,
-          exclude: /node_modules/,
+          exclude: /(node_modules)/,
           use: "babel-loader"
         }, {
           test: /\.svg$/,

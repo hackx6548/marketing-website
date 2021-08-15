@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import QuestionsDiagram from './QuestionsDiagram.jsx'
-
+import FlowBuilder from '@tspielhoelle/flowbuilder'
 let settingsRoot = document.getElementById('questionsdiagramroot');
 if (settingsRoot) {
   ReactDOM.render(
     <div className="h-100">
-      <QuestionsDiagram />
+      <FlowBuilder
+        getEndpoint={`/admin/questions/fetch`}
+        postEndpoint={`/admin/questions/update`}
+        updateEndpoint={`/admin/questions/update`}
+      />
     </div>,
     settingsRoot
   );
