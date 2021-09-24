@@ -104,7 +104,7 @@ html.h-100(lang=locale === "de" ? 'de': 'en')
       .flex-grow-1.z-0(class=currentPath && /users|admin/.test(currentPath) ? ' bg-light pb-5' : "" )
         block content
       if currentPath && !currentPath.includes('admin') && !currentPath.includes('users')
-        footer.site-footer(role='contentinfo' class=user ? "pb-5" : "")
+        footer.site-footer(role='contentinfo' class=user ? "pb-5" : "" style=course && `color: ${course.textColor}`)
           section.position-relative.px-4.px-md-0.bg-primary-dark()
             if currentPath !== "/users/login" && currentPath !== "/users/register" && currentPath !== '/jobcenter' &&  !currentPath.includes('/signup') && !blank
               +newsletter
@@ -160,9 +160,9 @@ html.h-100(lang=locale === "de" ? 'de': 'en')
 
               nav.d-flex.justify-content-between.align-items-center.py-5.container
                 div.pt-md-5.d-flex.justify-content-between.w-100
-                  a.font-weight-bold.navbar-brand.text-light.h-60.mr-md-5.mt-n4.mt-md-0(href="/")
+                  a.font-weight-bold.navbar-brand.text-light.h-60.mr-4.mr-md-5.mt-n4.mt-md-0(href="/")
                     include ../assets/media/dci.svg
-                  div.w-100.d-flex.justify-content-between.flex-column.flex-md-row.align-items-center
+                  div.w-100.d-flex.justify-content-between.flex-column.flex-md-row.align-items-start.align-items-md-center
                     div.mb-4.mb-md-0
                       small.mr-3.mr-lg-5.d-block.d-md-inline(class=course && course.coloraccent ? ``: `text-muted` style=course && course.coloraccent ? `color: white` : ``)
                         ="© 2021 Digital Career Institute gGmbH"
@@ -171,7 +171,7 @@ html.h-100(lang=locale === "de" ? 'de': 'en')
 
                     div
                       each page in footerPages
-                        small.ml-2.ml-md-4
+                        small.mr-2.mr-md-4
                           a(href='/pages/' + page.slug class=course && course.coloraccent ? ``: `text-muted` style=course && course.coloraccent ? `color: white` : ``)
                             =page.title
 
