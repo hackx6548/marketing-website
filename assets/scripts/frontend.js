@@ -129,7 +129,7 @@ const floatings = [...document.querySelectorAll(".floatings")];
 function showFloatings() {
   let timeout = 0;
   floatings.forEach(item => {
-    if (window.scrollY === 0 && elementInViewport(item) && window.innerWidth > 576) {
+    if (window.scrollY === 0 || (elementInViewport(item) && window.innerWidth > 576)) {
       setTimeout(() => {
         item.classList.add("floated");
       }, timeout);
