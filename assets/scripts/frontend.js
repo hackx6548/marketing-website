@@ -6,6 +6,7 @@ import "bootstrap/js/dist/collapse";
 import "bootstrap/js/dist/carousel";
 import "bootstrap/js/dist/alert";
 import { alertTimeout, get_form_payload, isGerman } from "./helper.js"
+import "bootstrap/js/dist/tab";
 import "./flow-builder"
 
 require("../css/style.scss");
@@ -402,7 +403,6 @@ Array.from(document.querySelectorAll('.dropdown-custom')).map(dropdown => {
     dropdown.querySelector('.dropdown-menu').classList.toggle('show')
   })
 })
-
 // const setObserver = (ref) => {
 //   let options = {
 //     threshold: 0.9
