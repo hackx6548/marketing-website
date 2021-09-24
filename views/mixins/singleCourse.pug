@@ -89,7 +89,7 @@ mixin singleCourse
                   .counter-number.font-weight-bold
                     h2.display-2.text-white.text-md-dark
                       span.counter-count=locals.settings.landingpage_archivements_locations ? locals.settings.landingpage_archivements_locations : user ? "setting not defined" : 5
-                  p.text-white.text-md-dark: +translate("DCI Alumni")
+                  p.text-white.text-md-dark: +translate("Campuses")
               .col-6.col-md-12.my-4.d-flex.flex-column.justify-content-center.border-left.border-white.border-md-0
                 .counter-item
                   .counter-number.font-weight-bol
@@ -148,11 +148,12 @@ mixin singleCourse
                       .d-flex.align-items-center(data-toggle='collapse', data-target=`#affiliate_partner_${index}_${index2}`)
                         h3.h2.text-primary-light.border-right.font-weight-bold.p-3.m-0=sub_item.split("|")[0]
                         .p-3.font-weight-bold= sub_item.split("|")[1]
-                      .d-none.d-md-block
-                        .px-3.pb-3
-                          = sub_item.split("|")[2]
-                      .d-md-none.bg-white.p-4(id=`affiliate_partner_${index}_${index2}`)
-                        p=sub_item.split("|")[2]
+                      if sub_item.split("|")[2]
+                        .d-none.d-md-block
+                          .px-3.pb-3
+                            = sub_item.split("|")[2]
+                        .d-md-none.bg-white.p-4(id=`affiliate_partner_${index}_${index2}`)
+                          p=sub_item.split("|")[2]
 
     .position-relative
       .py-5.py-md-0
