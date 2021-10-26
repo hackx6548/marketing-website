@@ -22,8 +22,7 @@ module.exports.getSingleCourse = async (req, res) => {
     .populate('locations')
     .populate('successStory')
     .exec()
-  res.locals.title = `${course.headline} | ${___("Courses", req.session.locale)} | Digital Career Institute`
-  renderLanguageVersion(req, res, course, 'course', 'courses', undefined, { title: `${course.headline} | Digital Career Institute`, metadescription: `${course.subtitle}` })
+  renderLanguageVersion(req, res, course, 'course', 'courses', undefined, { title: `${course.headline} | ${___("Courses", req.session.locale)} | Digital Career Institute`, metadescription: `${course.subtitle}` })
 }
 
 module.exports.financingOptions = async (req, res) => {

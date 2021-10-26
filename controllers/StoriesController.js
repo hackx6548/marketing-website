@@ -19,6 +19,5 @@ module.exports.getSingleStory = async (req, res) => {
     .populate('language')
     .populate('languageVersion')
     .exec();
-  res.locals.title = `${story.title} | ${___("Stories", req.session.locale)} | Digital Career Institute`
-  renderLanguageVersion(req, res, story, 'story', 'stories', undefined, { title: story.title, metadescription: `Stories - ${story.excerpt}` })
+  renderLanguageVersion(req, res, story, 'story', 'stories', undefined, { title: `${story.title} | ${___("Stories", req.session.locale)} | Digital Career Institute`, metadescription: `Stories - ${story.excerpt}` })
 }
