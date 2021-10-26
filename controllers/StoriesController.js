@@ -1,4 +1,5 @@
 require('dotenv').config({path: __dirname + '/../.env'});
+const { ___ } = require('../helpers/helper.js')
 const Story = require("../models/story");
 const {getAvailableTranslations, renderLanguageVersion} = require("./AbstractController");
 
@@ -18,5 +19,6 @@ module.exports.getSingleStory = async (req, res) => {
     .populate('language')
     .populate('languageVersion')
     .exec();
+  res.locals.title = `${story.title} | ${___("Stories", req.session.locale)} | Digital Career Institute`
   renderLanguageVersion(req, res, story, 'story', 'stories', undefined, { title: story.title, metadescription: `Stories - ${story.excerpt}` })
 }

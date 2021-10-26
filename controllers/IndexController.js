@@ -8,7 +8,7 @@ const Employee = require('../models/employee')
 const Setting = require('../models/setting')
 const request = require('request')
 const requestPromise = require("request-promise");
-const { sendMail, getAsyncRedis, getFbClid } = require('../helpers/helper')
+const { sendMail, getAsyncRedis, getFbClid, ___ } = require('../helpers/helper')
 const { getAvailableTranslations } = require('./AbstractController')
 const fetchEventsByLocation = require("../helpers/fetch_events_by_location");
 let redisClient = null;
@@ -336,7 +336,7 @@ module.exports.tour = async (req, res) => {
     const query = await getAvailableTranslations(req, res)
     const partners = await Partner.find(query)
       .exec();
-    res.locals.title = 'Become our Hiring Partner | Digital Career Institute'
+    res.locals.title = `${___("Become our Hiring Partner", req.session.locale)} | Digital Career Institute`
     res.render('tour', { companytour: true, partners })
   } catch (err) {
     console.log(err)

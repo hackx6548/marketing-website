@@ -11,6 +11,7 @@ const util = require('util');
 const fsReaddir = util.promisify(fs.readdir);
 const fsReadFile = util.promisify(fs.readFile);
 const fsLstat = util.promisify(fs.lstat);
+const i18n = require('i18n')
 exports.groupByKey = (items, key) => {
   return items.reduce(function (group, x) {
     (group[x[key]] = group[x[key]] || []).push(x);
@@ -225,4 +226,7 @@ exports.jsonResponseObject = async (res, payload, error = undefined) => {
   } else {
     return res.json({ payload, error })
   }
+}
+exports.___ = (translation, locale) => {
+  return locale ? i18n.__(translation) : translation
 }
