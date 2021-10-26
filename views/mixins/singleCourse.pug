@@ -303,17 +303,17 @@ mixin singleCourse
       .container.position-relative.pt-md-5
         h2.text-dark.text-md-white.py-5: +translate("Financing options")
         .row
-          .col-md-4.mb-5
-            .position-relative.h-100
-              .bg-white.position-absolute.quarter-transparent.d-none.d-md-block.w-100.h-100.ml-n5.mt-5
-              .card.shadow-sm.p-3.h-100.d-flex.justify-content-between
-                .d-flex.align-items-center
-                  div.text-primary-light.flex-grow-1
-                    include ../../assets/icons/course_job_interview.svg
-                  h2.ml-5.w-3.h-3.bg-primary-light.bg-md-yellow.text-white.d-flex.justify-content-center.align-items-center.font-weight-bold.flex-shrink-0.mr-n3.text-md-dark=`01`
-                p: +translate("If you are unemployed or in Kurzarbeit, the course can be 100% financed by the Jobcenter or Agentur für Arbeit.")
-
           if course.financingoption
+            .col-md-4.mb-5
+              .position-relative.h-100
+                .bg-white.position-absolute.quarter-transparent.d-none.d-md-block.w-100.h-100.ml-n5.mt-5
+                .card.shadow-sm.p-3.h-100.d-flex.justify-content-between
+                  .d-flex.align-items-center
+                    div.text-primary-light.flex-grow-1
+                      include ../../assets/icons/course_job_interview.svg
+                    h2.ml-5.w-3.h-3.bg-primary-light.bg-md-yellow.text-white.d-flex.justify-content-center.align-items-center.font-weight-bold.flex-shrink-0.mr-n3.text-md-dark=`01`
+                  p: +translate("If you are unemployed or in Kurzarbeit, the course can be 100% financed by the Jobcenter or Agentur für Arbeit.")
+
             .col-md-4.mb-5
               .position-relative.h-100
                 .bg-white.position-absolute.quarter-transparent.d-none.d-md-block.w-100.h-100.mt-n3.ml-n3

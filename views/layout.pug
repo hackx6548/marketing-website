@@ -101,7 +101,7 @@ html.h-100(lang=locale === "de" ? 'de': 'en')
       .flex-grow-1.z-0(class=currentPath && /users|admin/.test(currentPath) ? 'bg-light pb-5' : "" )
         block content
       if currentPath && !currentPath.includes('admin') && !currentPath.includes('users')
-        footer.site-footer(role='contentinfo' class=user ? "pb-5" : "" style=course && `color: ${course.textColor}`)
+        footer.site-footer(role='contentinfo' class=`${ user ? "pb-5" : "" } bg-primary-dark` style=course && `color: ${course.textColor}`)
           if !blank
             section.position-relative.px-4.px-md-0.pb-5()
               if currentPath !== "/users/login" && currentPath !== "/users/register" && currentPath !== '/jobcenter' && !currentPath.includes('/signup') && !blank
@@ -109,54 +109,54 @@ html.h-100(lang=locale === "de" ? 'de': 'en')
               .container#footer-items-container(class=currentPath !== "/users/login" && currentPath !== "/users/register" && currentPath !== '/jobcenter' && !currentPath.includes('/signup') || blank ? '' : 'pt-100')
                 .row.px-lg-5.px-md-0.px-sm-0
                   .col-6.col-sm-2.offset-lg-1.offset-md-1.offset-sm-0.footers-two
-                    p.font-weight-bold.mb-4()=__("Company")
+                    p.font-weight-bold.mb-4.text-muted=__("Company")
                     ul.list-unstyled
                       li.my-2
-                        a(class=!course ? "text-muted" : "text-white", href='/about-us/')=__("About us")
+                        a(class="text-muted", href='/about-us/')=__("About us")
                       li.my-2
-                        a(class=!course ? "text-muted" : "text-white", href='https://dci-jobs.personio.de/') Jobs
+                        a(class="text-muted", href='https://dci-jobs.personio.de/') Jobs
                       li.my-2
-                        a(class=!course ? "text-muted" : "text-white", href="/contact")=__("Contact")
+                        a(class="text-muted", href="/contact")=__("Contact")
                       li.my-2
-                        a(class=!course ? "text-muted" : "text-white", href='/jobcenter')
+                        a(class="text-muted", href='/jobcenter')
                           =__("Jobcenter")
                       li.my-2
-                        a.scrollbutton(class=!course ? "text-muted" : "text-white", href=`${locale !== 'en' ? `/` + locale : ``}/#hiring`, title="Partners")
+                        a.scrollbutton(class="text-muted", href=`${locale !== 'en' ? `/` + locale : ``}/#hiring`, title="Partners")
                           =__("Partners")
                       li.my-2
-                        a(class=!course ? "text-muted" : "text-white", href="/press")=__("Press")
+                        a(class="text-muted", href="/press")=__("Press")
 
                   .col-6.col-sm-3.footers-three
-                    p.font-weight-bold.mb-4()=__("Courses")
+                    p.font-weight-bold.mb-4.text-muted=__("Courses")
                     ul.list-unstyled
                       li.my-2
-                        a(class=!course ? "text-muted" : "text-white", href='/courses')=__("All courses")
+                        a(class="text-muted", href='/courses')=__("All courses")
                       each currentCourse in courses
                         li.my-2
-                          a(class=!course ? "text-muted" : "text-white", href='/courses/' + currentCourse.slug)=currentCourse.headline
+                          a(class="text-muted", href='/courses/' + currentCourse.slug)=currentCourse.headline
                           if user && user.admin === "true"
-                            a(class=!course ? "text-muted" : "text-white", href='/admin/courses/edit/' + currentCourse.slug)
+                            a(class="text-muted", href='/admin/courses/edit/' + currentCourse.slug)
                               small.text-monospace= " (Edit)"
 
                   .col-6.col-sm-3.footers-four
-                    p.font-weight-bold.mb-4(class=`text-white`)=__("Community")
+                    p.font-weight-bold.mb-4.text-muted=__("Community")
                     ul.list-unstyled
                       li.my-2
-                        a(class=!course ? "text-muted" : "text-white", target="_blank" rel="noopener" alt="DCI on Facebook" href="https://www.facebook.com/digitalcareerinstitute") Facebook
+                        a(class="text-muted", target="_blank" rel="noopener" alt="DCI on Facebook" href="https://www.facebook.com/digitalcareerinstitute") Facebook
                       li.my-2
-                        a(class=!course ? "text-muted" : "text-white", target="_blank" rel="noopener" alt="DCI on Instagram" href="https://www.instagram.com/digitalcareerinstitute/") Instagram
+                        a(class="text-muted", target="_blank" rel="noopener" alt="DCI on Instagram" href="https://www.instagram.com/digitalcareerinstitute/") Instagram
                       li.my-2
-                        a(class=!course ? "text-muted" : "text-white", target="_blank" rel="noopener" alt="DCI on LinkedIn" href="https://www.linkedin.com/school/dci-digital-career-institute/") LinkedIn
+                        a(class="text-muted", target="_blank" rel="noopener" alt="DCI on LinkedIn" href="https://www.linkedin.com/school/dci-digital-career-institute/") LinkedIn
                       li.my-2
-                        a(class=!course ? "text-muted" : "text-white", target="_blank" rel="noopener" alt="DCI on Github" href="https://github.com/DigitalCareerInstitute/marketing-website") Github
+                        a(class="text-muted", target="_blank" rel="noopener" alt="DCI on Github" href="https://github.com/DigitalCareerInstitute/marketing-website") Github
 
 
                   .col-6.col-sm-3.footers-five
-                    p.font-weight-bold.mb-4()=__("Campus")
+                    p.font-weight-bold.mb-4.text-muted=__("Campus")
                     ul.list-unstyled
                       each location in global_locations.filter(l => l.isCampus)
                         li.my-2
-                          a(class=!course ? "text-muted" : "text-white", href='/contact')=location.name
+                          a(class="text-muted", href='/contact')=location.name
 
                 nav.d-flex.justify-content-between.align-items-center.py-5.container.pl-0.pr-0
                   div.pt-md-5.d-flex.justify-content-between.w-100
@@ -164,7 +164,7 @@ html.h-100(lang=locale === "de" ? 'de': 'en')
                       include ../assets/media/dci.svg
                     div.w-100.d-flex.justify-content-between.flex-column.flex-md-row.align-items-center
                       div.mb-4.mb-md-0
-                        small.mr-3.mr-lg-5.d-block.d-md-inline()
+                        small.mr-3.mr-lg-5.d-block.d-md-inline.text-muted()
                           ="© 2021 Digital Career Institute gGmbH"
                         small()
                           =__("All Rights Reserved")
@@ -172,7 +172,7 @@ html.h-100(lang=locale === "de" ? 'de': 'en')
                       div
                         each page in footerPages
                           small.ml-2.ml-md-4
-                            a(href='/pages/' + page.slug)
+                            a.text-muted(href='/pages/' + page.slug)
                               =page.title
 
     if user
