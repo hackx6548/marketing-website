@@ -21,6 +21,6 @@ module.exports.renderLanguageVersion = async (req, res, model, singlePath, path,
   }
 }
 module.exports.getAvailableTranslations = async (req, res) => {
-  const currentLanguage = await Language.findOne(!!req.session.locale ? {title: req.session.locale} : {title: 'en'});
-  return {language: !req.session.locale ? {$in: [currentLanguage._id, null]} : currentLanguage._id}
+  const currentLanguage = await Language.findOne(!!req.session.locale ? { title: req.session.locale } : { title: 'en' });
+  return { language: !req.session.locale ? { $in: [currentLanguage._id, null] } : currentLanguage._id }
 }

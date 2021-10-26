@@ -8,7 +8,7 @@ module.exports.getCourses = async (req, res) => {
     const query = await getAvailableTranslations(req, res)
     const courses = await Course
       .find(query)
-      .sort({order: 1})
+      .sort({ order: 1 })
       .exec()
     res.render('courses', { courses })
   } catch (err) {
@@ -30,10 +30,10 @@ module.exports.getSingleCourse = async (req, res) => {
   const storyReq = Story.findOne({ ...query, "title": { $regex: /jose/, $options: 'i' } }, "title content workPosition")
     .exec({})
   const [course, partners, story] = await Promise.all([courseReq, partnersReq, storyReq])
-  const additionalPayload = { partners, story }
+  const additionalPayload = { partners, story, title: `${course.headline} | Digital Career Institute`, metadescription: `${course.subtitle}` }
   renderLanguageVersion(req, res, course, 'course', 'courses', `slug`, additionalPayload)
 }
 
 module.exports.financingOptions = async (req, res) => {
-    res.render('financingOptions')
+  res.render('financingOptions')
 }
