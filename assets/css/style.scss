@@ -2231,3 +2231,8 @@ input[type=number] {
 .dynamicinputform.fade-out {
   animation: ease 0s slideInFromReverse;
 }
+@include media-breakpoint-up(md) {
+  .align-items-md-center {
+    align-items: center;
+  }
+}
