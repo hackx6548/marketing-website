@@ -203,7 +203,7 @@ const render = (questions, flow) => {
 			const attributes = (answer) => `
 				placeholder="${isGerman ? (answer.extras.answertranslation.indexOf(':') !== -1 ? answer.extras.answertranslation.split(':')[1] : "") : (answer.name.indexOf(':') !== -1 ? answer.name.split(':')[1] : "")}"
 				class="form-control mb-4 freeanswer dynamicinput" 
-				name="${answer.extras.answeridentifier}"
+				name="${answer.extras.answeridentifier && answer.extras.answeridentifier.indexOf('phone') === -1 ? answer.extras.answeridentifier : answer.extras.answeridentifier + "_number_no_predial"}"
 				data-type="question"
 				${answer.extras.freeanswer_type === 'hidden' && searchParams.has(answer.extras.answeridentifier) ? `value="${searchParams.get(answer.extras.answeridentifier)}"` : answer.extras.freeanswer_type === 'hidden' ? `value="${answer.name}"` : ``}
 				${answer.extras.freeanswer_type === 'tel' ? `pattern="^\\+?\\d+$"` : ``}

@@ -83,7 +83,10 @@ module.exports.contactLocations = async (req, res) => {
   })
 };
 module.exports.contact = async (req, res, next) => {
-  const { firstname, lastname, email, age_field, body, phone, locations, sendaltemail, TermsofService, afa_jc_registered_, form_are_you_currently_unemployed } = req.body
+  const { firstname, lastname, email, age_field, body, phone_number_no_predial: phone, locations, sendaltemail, TermsofService, afa_jc_registered_, form_are_you_currently_unemployed } = req.body
+  if (!phone) {
+    phone = req.body.phone
+  }
   if (age_field) {
     console.log('Bot stepped into honeypot!')
     if (req.headers['content-type'] === 'application/json') {
