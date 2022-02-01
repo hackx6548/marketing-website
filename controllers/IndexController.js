@@ -87,6 +87,9 @@ module.exports.contact = async (req, res, next) => {
   if (!phone) {
     phone = req.body.phone
   }
+  if (req.body.phone_number_no_predial) {
+    req.body.phone = req.body.phone_number_no_predial
+  }
   if (age_field) {
     console.log('Bot stepped into honeypot!')
     if (req.headers['content-type'] === 'application/json') {
