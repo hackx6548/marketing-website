@@ -26,26 +26,27 @@ const toggleNL = (remove = false) => {
       const email = document.querySelector("#newsletter_email").value.trim();
       if (email) {
         toggleNL();
-        fetch("/newsletter-signup", {
+        fetch("/contact", {
           method: "POST",
           headers: {
             "content-type": "application/json"
           },
-          body: JSON.stringify({ email }) // data can be `string` or {object}!
+          body: JSON.stringify({ email, TermsofService: true }) // data can be `string` or {object}!
         })
           .then(res => res.json())
           .then(response => {
             const responseContainer = document.getElementById("response");
             const alertContainer = document.createElement("div");
-            alertContainer.classList = "alert"
-            if (response.code === 200) {
-              responseContainer.classList.remove("alert-danger")
-              responseContainer.classList.add("alert-success")
-              alertContainer.innerHTML = isGerman ? `Du solltest eine Bestätigungs Email bekommen haben. Check deinen Posteingang` : `You should have got a subscription confimation email. Check your inbox`
-            } else if (response.code === 422) {
+            alertContainer.classList.add("alert")
+            responseContainer.classList.add("word-wrap-break-word")
+            if (response.response.error) {
               responseContainer.classList.remove("alert-success")
               responseContainer.classList.add("alert-danger")
-              alertContainer.innerHTML = response.message.includes("already a list member") && isGerman ? response.message.replace("is already a list member", 'befindet sich schon in der Liste') : response.message
+              alertContainer.innerHTML = response.response.error
+            } else {
+              responseContainer.classList.remove("alert-danger")
+              responseContainer.classList.add("alert-success")
+              alertContainer.innerHTML = isGerman ? `Danke für deine Anfrage, wir melden uns bei dir!` : `Thanks for your request, we will get in touch with you!`
             }
             responseContainer.innerHTML = alertContainer.innerHTML
           })

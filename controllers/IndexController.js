@@ -357,6 +357,7 @@ module.exports.tour = async (req, res) => {
     console.log(err)
   }
 }
+// TODO remove since unused
 module.exports.newsletter = (req, res) => {
   const { email } = req.body
 
