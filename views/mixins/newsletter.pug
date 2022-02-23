@@ -10,7 +10,7 @@ mixin newsletter
               p.mb-5.text-dark=__("Get the latest news on events, project presentations and more")
             .col-lg-7.d-flex.flex-column.justify-content-end.pt-5.pt-lg-5
               .ml-lg-5.pl-lg-5
-                form#mc-embedded-subscribe-form(name='mc-embedded-subscribe-form', method='post', action='/newsletter-signup')
+                form#mc-embedded-subscribe-form(name='mc-embedded-subscribe-form' onSubmit="return false;" )
                   div.mb-3
                     label.text-white.font-size-120(for='newsletter_email')=__("Email")
                     input#newsletter_email.subs_input.text-white.border-bottom.border-white.bg-transparent(type='email', required, name='email')

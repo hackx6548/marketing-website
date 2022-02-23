@@ -18,8 +18,6 @@ router.post("/contact", IndexController.contact);
 
 router.get("/tour", IndexController.tour);
 
-router.post("/newsletter-signup", IndexController.newsletter);
-
 router.get("/jobcenter", IndexController.jobcenter);
 
 router.get("/thank-you/:id", IndexController.thankYou);
